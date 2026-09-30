@@ -1,74 +1,44 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Videira Vinhoteca</title><link rel="stylesheet" href="/styles.css"></head><body>
-<header class="site-header">
-  <div class="topbar shell">
-    <a class="brand" href="/">Videira</a>
-    <form class="global-search" action="/loja.html">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-      <input name="q" placeholder="Pesquisar vinhos, uvas, regiões ou vinícolas">
-    </form>
-    <nav class="top-actions">
-      <a href="/loja.html">Loja</a>
-      <a class="bag" href="/loja.html" aria-label="Catálogo"><svg viewBox="0 0 24 24"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></a>
-    </nav>
-  </div>
-  <div class="navrow">
-    <nav class="shell navlinks">
-      <a href="/loja.html">Vinhos</a>
-      <a href="/vinicolas.html">Vinícolas</a>
-      <a href="/uvas.html">Uvas</a>
-      <a href="/regioes.html">Regiões</a>
-      <a href="/#harmonizacoes">Harmonizações</a>
-      <a href="/#sobre">Sobre</a>
-    </nav>
-  </div>
-</header>
-<main>
-<section class="hero shell">
-  <div class="hero-copy">
-    <span class="eyebrow">SELEÇÃO VIDEIRA</span>
-    <h1>Encontre o vinho certo para cada momento</h1>
-    <p>Descubra rótulos por estilo, uva, região e produtor.</p>
-    <a class="primary-btn" href="/loja.html">Explorar vinhos</a>
-  </div>
-  <div class="hero-art"><div class="hero-bottle"><span>VIDEIRA</span></div><div class="hero-glass"></div></div>
-</section>
-
-<section class="shell category-section">
-  <div class="section-head"><div><h2>Explore por tipo</h2><p>Comece pelo estilo que combina com você.</p></div></div>
-  <div class="category-row">
-    <a href="/loja.html?tipo=tinto" class="category"><div class="cat-img tinto"></div><b>Tintos</b></a>
-    <a href="/loja.html?tipo=branco" class="category"><div class="cat-img branco"></div><b>Brancos</b></a>
-    <a href="/loja.html?tipo=rose" class="category"><div class="cat-img rose"></div><b>Rosés</b></a>
-    <a href="/loja.html?tipo=espumante" class="category"><div class="cat-img espumante"></div><b>Espumantes</b></a>
-    <a href="/loja.html?tipo=doce" class="category"><div class="cat-img doce"></div><b>Sobremesa</b></a>
-    <a href="/loja.html?tipo=fortificado" class="category"><div class="cat-img fortificado"></div><b>Fortificados</b></a>
-  </div>
-</section>
-
-<section class="shell shelf">
-  <div class="section-head"><div><h2>Descobertas da semana</h2><p>Uma seleção para conhecer novos estilos.</p></div><a href="/loja.html" class="outline-btn">Ver tudo</a></div>
-  <div class="rail-shell"><button class="rail-arrow prev">‹</button><div class="wine-rail" id="discover"></div><button class="rail-arrow next">›</button></div>
-</section>
-
-<section class="shell promo-grid">
-  <a class="promo region-promo" href="/regioes.html"><span>REGIÕES</span><h3>Explore grandes terroirs</h3><p>Argentina, França, Itália, Chile, Brasil e muito mais.</p></a>
-  <a class="promo grape-promo" href="/uvas.html"><span>UVAS</span><h3>Conheça as principais variedades</h3><p>Malbec, Chardonnay, Chenin Blanc, Cabernet Sauvignon e outras.</p></a>
-</section>
-
-<section class="shell shelf">
-  <div class="section-head"><div><h2>Mais bem avaliados</h2><p>Rótulos que se destacam entre os apreciadores.</p></div><a href="/loja.html" class="outline-btn">Ver tudo</a></div>
-  <div class="rail-shell"><button class="rail-arrow prev">‹</button><div class="wine-rail" id="rated"></div><button class="rail-arrow next">›</button></div>
-</section>
-
-<section class="harmonize" id="harmonizacoes"><div class="shell"><h2>Harmonizações perfeitas</h2><p>Descubra combinações para valorizar cada taça.</p><a class="light-btn" href="/loja.html">Explorar catálogo</a></div></section>
-</main>
-<footer class="footer" id="sobre">
-  <div class="shell footer-grid">
-    <div><div class="footer-brand">Videira</div><p>Um catálogo para descobrir vinhos, uvas, regiões e produtores.</p></div>
-    <div><b>Explorar</b><a href="/loja.html">Vinhos</a><a href="/vinicolas.html">Vinícolas</a><a href="/uvas.html">Uvas</a><a href="/regioes.html">Regiões</a></div>
-    <div><b>Ajuda</b><a href="#">Como funciona</a><a href="#">Perguntas frequentes</a><a href="#">Fale conosco</a></div>
-    <div><b>Legal</b><a href="#">Privacidade</a><a href="#">Termos de uso</a></div>
-  </div>
-</footer>
-<a class="whatsapp" href="#" aria-label="WhatsApp">WA</a>
-<script src="/app.js"></script></body></html>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Videira Vinhoteca</title>
+<style>
+html,body{margin:0;background:#fff;font-family:Arial,Helvetica,sans-serif}.snapshot-loading{min-height:100vh;display:grid;place-items:center;color:#555}.snapshot-loading b{font-size:20px}
+</style></head><body><div class="snapshot-loading"><b>Carregando Videira...</b></div>
+<script>
+(async()=>{
+ const parts=["/snapshot/vhome-01.part","/snapshot/vhome-02.part","/snapshot/vhome-03.part","/snapshot/vhome-04.part","/snapshot/vhome-05.part","/snapshot/vhome-06.part","/snapshot/vhome-07.part","/snapshot/vhome-08.part","/snapshot/vhome-09.part","/snapshot/vhome-10.part","/snapshot/vhome-11.part","/snapshot/vhome-12.part","/snapshot/vhome-13.part","/snapshot/vhome-14.part","/snapshot/vhome-15.part","/snapshot/vhome-16.part","/snapshot/vhome-17.part","/snapshot/vhome-18.part","/snapshot/vhome-19.part","/snapshot/vhome-20.part","/snapshot/vhome-21.part","/snapshot/vhome-22.part","/snapshot/vhome-23.part","/snapshot/vhome-24.part","/snapshot/vhome-25.part"];
+ const html=(await Promise.all(parts.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(p);return r.text()})))).join("");
+ document.body.innerHTML=html;
+ const style=document.createElement("style");
+ style.textContent=`
+ a[aria-label="vivino.com"] svg{display:none!important}
+ a[aria-label="vivino.com"]{min-width:145px!important;display:flex!important;align-items:center!important;text-decoration:none!important}
+ a[aria-label="vivino.com"]::after{content:"VIDEIRA";font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:800;letter-spacing:2px;color:#ba1628}
+ `;
+ document.head.appendChild(style);
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+ const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ nodes.forEach(n=>{
+   if(!n.parentElement||["SCRIPT","STYLE"].includes(n.parentElement.tagName))return;
+   let v=n.nodeValue;
+   if(v.includes("Best offers for you"))v=v.replace("Best offers for you","Descobertas da semana");
+   if(v.includes("Mais vendidos em Brasil"))v=v.replace("Mais vendidos em Brasil","Mais procurados no Brasil");
+   if(v.trim()==="Adicionar")v="Pedir orçamento";
+   if(v.includes("Vivino"))v=v.replaceAll("Vivino","Videira");
+   n.nodeValue=v;
+ });
+ document.querySelectorAll("a").forEach(a=>{
+   const h=a.getAttribute("href")||"";
+   if(h==="index.html"||/vivino\.com\/(BR\/pt-BR\/)?$/.test(h))a.href="/";
+   else if(h.includes("/explore"))a.href="/loja.html";
+   else if(h.includes("vivino.com")&&h.includes("/w/"))a.href="/vinho.html";
+ });
+ document.querySelectorAll("form").forEach(f=>{
+   const q=f.querySelector('input[name="q"]');
+   if(q)f.addEventListener("submit",e=>{e.preventDefault();location.href="/loja.html?q="+encodeURIComponent(q.value||"")});
+ });
+ document.querySelectorAll("button").forEach(b=>{
+   if((b.textContent||"").trim()==="Pedir orçamento")b.addEventListener("click",e=>{
+     e.preventDefault();window.open("https://wa.me/?text="+encodeURIComponent("Olá! Gostaria de pedir um orçamento de vinho na Videira."),"_blank","noopener");
+   });
+ });
+})().catch(err=>{document.body.innerHTML='<div class="snapshot-loading"><b>Erro ao carregar a página.</b></div>';console.error(err)});
+</script></body></html>
