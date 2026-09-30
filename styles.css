@@ -32,3 +32,68 @@ body:has(.hero) .site-header{
 body:has(.hero) .hero{
   padding-top:86px!important;
 }
+
+/* Dropdowns do menu principal */
+.main-nav{overflow:visible}
+.nav-item{position:relative;display:flex;align-items:center;height:68px}
+.nav-trigger{display:flex!important;align-items:center;gap:5px}
+.nav-chevron{font-size:13px;line-height:1;transition:transform .18s ease}
+.nav-item:hover .nav-chevron,.nav-item:focus-within .nav-chevron{transform:rotate(180deg)}
+.nav-dropdown{
+  position:absolute;
+  top:calc(100% - 4px);
+  left:50%;
+  transform:translate(-50%,10px);
+  width:520px;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:18px;
+  padding:18px;
+  border:1px solid rgba(109,0,63,.12);
+  border-radius:18px;
+  background:rgba(255,255,255,.98);
+  color:var(--ink);
+  box-shadow:0 20px 50px rgba(34,9,22,.18);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .16s ease,transform .16s ease,visibility .16s ease;
+}
+.nav-item:hover .nav-dropdown,.nav-item:focus-within .nav-dropdown{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translate(-50%,0);
+}
+.dropdown-intro{
+  border-radius:13px;
+  background:linear-gradient(145deg,#6d003f,#4b1d2d);
+  color:#fff;
+  padding:18px;
+}
+.dropdown-intro span{display:block;font-size:9px;letter-spacing:.15em;font-weight:800;color:#e9cbd9;margin-bottom:8px}
+.dropdown-intro strong{display:block;font:24px/1.05 var(--heading);margin-bottom:10px}
+.dropdown-intro p{font-size:12px;line-height:1.45;color:#eadce3;margin:0}
+.dropdown-links{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.dropdown-links>a{
+  padding:10px 11px;
+  border-radius:10px;
+  color:var(--ink)!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+  font-size:12px!important;
+  transition:background .15s ease,color .15s ease;
+}
+.dropdown-links>a:hover{background:var(--wine-soft);color:var(--wine)!important}
+.dropdown-links b{display:block;font-size:12px;margin-bottom:2px}
+.dropdown-links small{display:block;color:var(--muted);font-size:10px;font-weight:400}
+.dropdown-links .dropdown-all{
+  grid-column:1/-1;
+  margin-top:3px;
+  border-top:1px solid var(--line);
+  border-radius:0;
+  padding-top:12px;
+  color:var(--wine)!important;
+  font-weight:800!important;
+}
+@media(max-width:1000px){.nav-item{height:auto}.nav-dropdown{display:none}}

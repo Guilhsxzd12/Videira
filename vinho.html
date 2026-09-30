@@ -5,14 +5,55 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css"><title>Vinho | Videira</title></head><body><header class="site-header">
   <div class="shell header-bar">
-    <a class="brand" href="/" aria-label="Videira">
-      <img src="/assets/videira-logo.svg" alt="Videira">
-    </a>
+    <a class="brand" href="/" aria-label="Videira"><img src="/assets/videira-logo.svg" alt="Videira"></a>
     <nav class="main-nav" aria-label="Principal">
       <a href="/">Início</a>
-      <a href="/loja.html">Vinhos</a>
-      <a href="/uvas.html">Uvas</a>
-      <a href="/vinicolas.html">Vinícolas</a>
+
+      <div class="nav-item">
+        <a class="nav-trigger" href="/loja.html">Vinhos <span class="nav-chevron">⌄</span></a>
+        <div class="nav-dropdown wines-dropdown">
+          <div class="dropdown-intro"><span>EXPLORAR VINHOS</span><strong>Escolha pelo seu estilo</strong><p>Encontre rótulos por tipo e ocasião.</p></div>
+          <div class="dropdown-links">
+            <a href="/loja.html?tipo=Tinto"><b>Tintos</b><small>Estrutura e intensidade</small></a>
+            <a href="/loja.html?tipo=Branco"><b>Brancos</b><small>Frescor e aromas</small></a>
+            <a href="/loja.html?tipo=Ros%C3%A9"><b>Rosés</b><small>Leves e versáteis</small></a>
+            <a href="/loja.html?tipo=Espumante"><b>Espumantes</b><small>Para celebrar</small></a>
+            <a href="/loja.html?tipo=Sobremesa"><b>Sobremesa</b><small>Doces e envolventes</small></a>
+            <a href="/loja.html" class="dropdown-all">Ver todos os vinhos →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a class="nav-trigger" href="/uvas.html">Uvas <span class="nav-chevron">⌄</span></a>
+        <div class="nav-dropdown">
+          <div class="dropdown-intro"><span>VARIEDADES</span><strong>Descubra pela uva</strong><p>Explore estilos e perfis aromáticos.</p></div>
+          <div class="dropdown-links">
+            <a href="/loja.html?uva=Malbec"><b>Malbec</b><small>Frutado e intenso</small></a>
+            <a href="/loja.html?uva=Chardonnay"><b>Chardonnay</b><small>Versátil e elegante</small></a>
+            <a href="/loja.html?uva=Cabernet%20Franc"><b>Cabernet Franc</b><small>Fresco e herbal</small></a>
+            <a href="/loja.html?uva=Pinot%20Noir"><b>Pinot Noir</b><small>Delicado e perfumado</small></a>
+            <a href="/loja.html?uva=Chenin%20Blanc"><b>Chenin Blanc</b><small>Aromático e vibrante</small></a>
+            <a href="/uvas.html" class="dropdown-all">Ver todas as uvas →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a class="nav-trigger" href="/vinicolas.html">Vinícolas <span class="nav-chevron">⌄</span></a>
+        <div class="nav-dropdown">
+          <div class="dropdown-intro"><span>PRODUTORES</span><strong>Conheça as vinícolas</strong><p>Histórias e terroirs por trás dos rótulos.</p></div>
+          <div class="dropdown-links">
+            <a href="/loja.html?vinicola=Santa%20Julia"><b>Santa Julia</b><small>Mendoza, Argentina</small></a>
+            <a href="/loja.html?vinicola=D.V.%20Catena"><b>D.V. Catena</b><small>Mendoza, Argentina</small></a>
+            <a href="/loja.html?vinicola=Catena%20Zapata"><b>Catena Zapata</b><small>Mendoza, Argentina</small></a>
+            <a href="/loja.html?vinicola=Garz%C3%B3n"><b>Garzón</b><small>Maldonado, Uruguai</small></a>
+            <a href="/loja.html?vinicola=Chandon"><b>Chandon</b><small>Serra Gaúcha, Brasil</small></a>
+            <a href="/vinicolas.html" class="dropdown-all">Ver todas as vinícolas →</a>
+          </div>
+        </div>
+      </div>
+
       <a href="/regioes.html">Regiões</a>
     </nav>
     <form class="header-search" action="/loja.html">
