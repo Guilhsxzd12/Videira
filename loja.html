@@ -1,59 +1,60 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Catálogo de vinhos | Videira</title><link rel="stylesheet" href="/styles.css"></head><body>
-<header class="oda-like-header">
-  <div class="oda-like-bar">
-    <a class="oda-like-logo" href="/" aria-label="Videira">
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css"><title>Catálogo | Videira</title></head><body><header class="site-header">
+  <div class="shell header-bar">
+    <a class="brand" href="/" aria-label="Videira">
       <img src="/assets/videira-logo.svg" alt="Videira">
     </a>
-    <nav class="oda-like-nav" aria-label="Principal">
-      <a href="/">INÍCIO</a>
-      <a href="/loja.html">VINHOS</a>
-      <a href="/uvas.html">UVAS</a>
-      <a href="/vinicolas.html">BODEGAS</a>
-      <a href="/regioes.html">REGIÕES</a>
-      <a href="/#sobre">SOBRE</a>
-      <a href="#">FAQ</a>
+    <nav class="main-nav" aria-label="Principal">
+      <a href="/">Início</a>
+      <a href="/loja.html">Vinhos</a>
+      <a href="/uvas.html">Uvas</a>
+      <a href="/vinicolas.html">Vinícolas</a>
+      <a href="/regioes.html">Regiões</a>
     </nav>
-    <div class="oda-like-actions">
-      <button type="button" class="oda-lang">PT</button>
-      <button type="button" class="oda-lang">ES</button>
-      <a class="oda-cta" href="/loja.html">CATÁLOGO</a>
-    </div>
+    <form class="header-search" action="/loja.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.2-4.2"/></svg>
+      <input name="q" placeholder="Buscar no catálogo">
+    </form>
+    <a class="header-cta" href="/loja.html">Catálogo</a>
   </div>
 </header>
-<main class="shell shop-layout">
-<aside class="filters-panel">
-  <section><h3>Tipos de vinho</h3><label><input type="checkbox" value="Tinto"> Tinto</label><label><input type="checkbox" value="Branco"> Branco</label><label><input type="checkbox" value="Espumante"> Vinho espumante</label><label><input type="checkbox" value="Rosé"> Rosé</label><label><input type="checkbox" value="Sobremesa"> Sobremesa</label><label><input type="checkbox" value="Fortificado"> Fortificado</label></section>
-  <section><h3>Faixa de Preços <small>(BRL)</small></h3><input id="priceRange" type="range" min="0" max="400" value="400"><div id="priceValue">R$0 – R$400</div><label><input type="checkbox"> Mostrar somente vinhos com desconto</label></section>
-  <section><h3>Classificação média</h3><label><input type="radio" name="rating" value="4.2"> 4.2+ <small>Muito raro</small></label><label><input type="radio" name="rating" value="3.8"> 3.8+ <small>Bom</small></label><label><input type="radio" name="rating" value="3.6"> 3.6+ <small>Comum</small></label><label><input type="radio" name="rating" value="0" checked> Qualquer classificação</label></section>
-  <section><h3>Uvas</h3><label><input type="checkbox" class="grape-filter" value="Cabernet Sauvignon"> Cabernet Sauvignon</label><label><input type="checkbox" class="grape-filter" value="Malbec"> Malbec</label><label><input type="checkbox" class="grape-filter" value="Pinot Noir"> Pinot Noir</label><label><input type="checkbox" class="grape-filter" value="Carménère"> Carménère</label><label><input type="checkbox" class="grape-filter" value="Shiraz/Syrah"> Shiraz/Syrah</label><label><input type="checkbox" class="grape-filter" value="Cabernet Franc"> Cabernet Franc</label><label><input type="checkbox" class="grape-filter" value="Primitivo"> Primitivo</label><label><input type="checkbox" class="grape-filter" value="Tannat"> Tannat</label><label><input type="checkbox" class="grape-filter" value="Sangiovese"> Sangiovese</label><label><input type="checkbox" class="grape-filter" value="Tempranillo"> Tempranillo</label></section>
-  <section><h3>Regiões</h3><label><input type="checkbox" class="region-filter" value="Mendoza"> Mendoza</label><label><input type="checkbox" class="region-filter" value="Serra Gaúcha"> Serra Gaúcha</label><label><input type="checkbox" class="region-filter" value="Bordeaux"> Bordeaux</label><label><input type="checkbox" class="region-filter" value="Vale do Maipo"> Vale do Maipo</label><label><input type="checkbox" class="region-filter" value="Puglia"> Puglia</label><label><input type="checkbox" class="region-filter" value="Toscana"> Toscana</label></section>
-  <section><h3>Países</h3><label><input type="checkbox"> Chile</label><label><input type="checkbox"> Argentina</label><label><input type="checkbox"> Itália</label><label><input type="checkbox"> Brasil</label><label><input type="checkbox"> França</label><label><input type="checkbox"> Portugal</label><label><input type="checkbox"> Espanha</label></section>
-  <section><h3>Harmonizações com comidas</h3><label><input type="checkbox"> Carne de vaca</label><label><input type="checkbox"> Cordeiro</label><label><input type="checkbox"> Aves</label><label><input type="checkbox"> Massa</label><label><input type="checkbox"> Carne de porco</label></section>
-</aside>
-<section class="shop-main">
-  <div class="shop-title"><div><h1>Vinhos</h1><p id="resultCount">Exibindo 1-8 de 8 VINHOS</p></div><label>Classificar: <select id="sort"><option>Recomendados</option><option>Menor preço</option><option>Maior preço</option><option>Melhor avaliação</option></select></label></div>
-  <div id="catalog" class="shop-grid"></div>
-</section>
+<main class="catalog-page shell">
+  <div class="page-intro">
+    <span class="section-label">Catálogo</span>
+    <h1>Encontre seu próximo vinho</h1>
+    <p>Filtre por estilo, uva, região e preço.</p>
+  </div>
+  <div class="catalog-toolbar">
+    <button class="filter-toggle" id="filterToggle">Filtros</button>
+    <div id="resultCount">Carregando...</div>
+    <select id="sort"><option>Mais relevantes</option><option>Menor preço</option><option>Maior preço</option></select>
+  </div>
+  <div class="catalog-layout">
+    <aside class="filters" id="filters">
+      <div class="filter-block"><b>Tipo</b><div id="typeFilters"></div></div>
+      <div class="filter-block"><b>Preço máximo</b><input id="priceRange" type="range" min="50" max="1000" value="1000"><small id="priceValue">Até R$ 1.000</small></div>
+      <div class="filter-block"><b>Uva</b><input id="grapeSearch" type="search" placeholder="Buscar uva"></div>
+      <button class="clear-filters" id="clearFilters">Limpar filtros</button>
+    </aside>
+    <section><div class="catalog-grid" id="catalog"></div></section>
+  </div>
 </main>
-<section class="trust">
-  <div class="shell">
-    <h2>Usado por milhares de pessoas para descobrir o vinho certo, sempre.</h2>
-    <div class="trust-grid">
-      <div><span class="trust-ico">01</span><p>A maior comunidade de vinhos da Videira</p></div>
-      <div><span class="trust-ico">02</span><p>Atendimento para ajudar na escolha do seu vinho</p></div>
-      <div><span class="trust-ico">03</span><p>Pedido de orçamento simples e direto</p></div>
-      <div><span class="trust-ico">04</span><p>Compare estilos, regiões e avaliações antes de pedir</p></div>
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <img src="/assets/videira-logo.svg" alt="Videira">
+      <p>Uma curadoria para descobrir vinhos, uvas, regiões e produtores com mais contexto e menos complicação.</p>
     </div>
+    <div><b>Explorar</b><a href="/loja.html">Vinhos</a><a href="/uvas.html">Uvas</a><a href="/vinicolas.html">Vinícolas</a><a href="/regioes.html">Regiões</a></div>
+    <div><b>Atendimento</b><a href="#">Como funciona</a><a href="#">Perguntas frequentes</a><a href="#">Fale conosco</a></div>
+    <div><b>Redes</b><a href="#" data-cms-instagram>Instagram</a><a href="#" data-cms-whatsapp>WhatsApp</a></div>
   </div>
-</section>
-<footer class="vh-footer">
-  <div class="shell vh-footer__main">
-    <div class="footer-logo"><img src="/assets/videira-logo.svg" alt="Videira"></div>
-    <div><h4>POLÍTICAS</h4><a href="#">Privacidade</a><a href="#">Termos</a></div>
-    <div><h4>NAVEGAR PELO MENU</h4><a href="/">Início</a><a href="/loja.html">Vinhos</a><a href="/uvas.html">Uvas</a><a href="/vinicolas.html">Bodegas</a><a href="/regioes.html">Regiões</a></div>
-    <div><h4>REDES SOCIAIS</h4><div class="socials"><a href="#" data-cms-instagram>IG</a><a href="#" data-cms-whatsapp>WA</a></div></div>
-  </div>
-  <div class="vh-footer__bottom"><span data-cms-footer>Videira Vinhoteca © 2026</span></div>
-</footer>
-<a class="chat-fab" href="#">≡</a>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/supabase-config.js"></script><script src="/cms.js"></script><script src="/app.js"></script></body></html>
+  <div class="footer-bottom"><div class="shell"><span data-cms-footer>Videira Vinhoteca © 2026</span></div></div>
+</footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script src="/cms.js"></script>
+<script src="/app.js"></script></body></html>

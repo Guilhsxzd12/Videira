@@ -1,29 +1,47 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vinho | Videira</title><link rel="stylesheet" href="/styles.css"></head><body><header class="oda-like-header">
-  <div class="oda-like-bar">
-    <a class="oda-like-logo" href="/" aria-label="Videira">
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css"><title>Vinho | Videira</title></head><body><header class="site-header">
+  <div class="shell header-bar">
+    <a class="brand" href="/" aria-label="Videira">
       <img src="/assets/videira-logo.svg" alt="Videira">
     </a>
-    <nav class="oda-like-nav" aria-label="Principal">
-      <a href="/">INÍCIO</a>
-      <a href="/loja.html">VINHOS</a>
-      <a href="/uvas.html">UVAS</a>
-      <a href="/vinicolas.html">BODEGAS</a>
-      <a href="/regioes.html">REGIÕES</a>
-      <a href="/#sobre">SOBRE</a>
-      <a href="#">FAQ</a>
+    <nav class="main-nav" aria-label="Principal">
+      <a href="/">Início</a>
+      <a href="/loja.html">Vinhos</a>
+      <a href="/uvas.html">Uvas</a>
+      <a href="/vinicolas.html">Vinícolas</a>
+      <a href="/regioes.html">Regiões</a>
     </nav>
-    <div class="oda-like-actions">
-      <button type="button" class="oda-lang">PT</button>
-      <button type="button" class="oda-lang">ES</button>
-      <a class="oda-cta" href="/loja.html">CATÁLOGO</a>
+    <form class="header-search" action="/loja.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.2-4.2"/></svg>
+      <input name="q" placeholder="Buscar no catálogo">
+    </form>
+    <a class="header-cta" href="/loja.html">Catálogo</a>
+  </div>
+</header>
+<main class="product-page shell">
+  <nav class="breadcrumbs"><a href="/">Início</a><span>›</span><a href="/loja.html">Vinhos</a><span>›</span><span id="crumbWine">Vinho</span></nav>
+  <div id="product"></div>
+  <section class="section">
+    <div class="section-heading"><div><span class="section-label">Conheça</span><h2>Vinhos da mesma vinícola</h2></div></div>
+    <div class="carousel-shell"><button class="carousel-arrow prev">‹</button><div class="product-rail" id="same"></div><button class="carousel-arrow next">›</button></div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <img src="/assets/videira-logo.svg" alt="Videira">
+      <p>Uma curadoria para descobrir vinhos, uvas, regiões e produtores com mais contexto e menos complicação.</p>
     </div>
+    <div><b>Explorar</b><a href="/loja.html">Vinhos</a><a href="/uvas.html">Uvas</a><a href="/vinicolas.html">Vinícolas</a><a href="/regioes.html">Regiões</a></div>
+    <div><b>Atendimento</b><a href="#">Como funciona</a><a href="#">Perguntas frequentes</a><a href="#">Fale conosco</a></div>
+    <div><b>Redes</b><a href="#" data-cms-instagram>Instagram</a><a href="#" data-cms-whatsapp>WhatsApp</a></div>
   </div>
-</header><main class="shell product-page"><div id="product"></div><section class="shelf same"><div class="shelf-head"><div><h2>CONHEÇA os vinhos da mesma bodega</h2></div></div><div class="rail-wrap"><button class="arrow prev">‹</button><div class="product-rail" id="same"></div><button class="arrow next">›</button></div></section></main><footer class="vh-footer">
-  <div class="shell vh-footer__main">
-    <div class="footer-logo"><img src="/assets/videira-logo.svg" alt="Videira"></div>
-    <div><h4>POLÍTICAS</h4><a href="#">Privacidade</a><a href="#">Termos</a></div>
-    <div><h4>NAVEGAR PELO MENU</h4><a href="/">Início</a><a href="/loja.html">Vinhos</a><a href="/uvas.html">Uvas</a><a href="/vinicolas.html">Bodegas</a><a href="/regioes.html">Regiões</a></div>
-    <div><h4>REDES SOCIAIS</h4><div class="socials"><a href="#" data-cms-instagram>IG</a><a href="#" data-cms-whatsapp>WA</a></div></div>
-  </div>
-  <div class="vh-footer__bottom"><span data-cms-footer>Videira Vinhoteca © 2026</span></div>
-</footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/supabase-config.js"></script><script src="/cms.js"></script><script src="/app.js"></script></body></html>
+  <div class="footer-bottom"><div class="shell"><span data-cms-footer>Videira Vinhoteca © 2026</span></div></div>
+</footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script src="/cms.js"></script>
+<script src="/app.js"></script></body></html>
