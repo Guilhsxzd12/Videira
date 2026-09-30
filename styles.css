@@ -30,3 +30,12 @@
 
 /* Header sem faixa branca */
 .premium-header{background:var(--wine)!important;border-bottom:0!important;padding:10px 0!important}
+
+/* Cabeçalho inspirado na referência ODA enviada pelo usuário */
+.oda-like-header{position:sticky;top:0;z-index:120;background:#6f003f;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.oda-like-bar{width:calc(100% - 8px);margin:0 auto;min-height:72px;border:1px solid rgba(255,255,255,.20);border-radius:38px;background:linear-gradient(90deg,#5c1f2b,#56202b);display:grid;grid-template-columns:210px 1fr auto;align-items:center;gap:22px;padding:0 22px;color:#fff}
+.oda-like-logo{display:flex;align-items:center;height:58px}.oda-like-logo img{display:block;width:165px;max-height:55px;object-fit:contain;object-position:left center}
+.oda-like-nav{display:flex;justify-content:center;align-items:center;gap:29px;min-width:0}.oda-like-nav a{font-size:11px;font-weight:700;letter-spacing:.075em;color:#d8b8c1;white-space:nowrap;transition:.2s}.oda-like-nav a:hover{color:#fff}
+.oda-like-actions{display:flex;align-items:center;gap:10px}.oda-lang{border:0;background:transparent;color:#fff;font-size:12px;font-weight:800;padding:4px 0;cursor:pointer}.oda-cta{display:inline-flex;align-items:center;justify-content:center;min-width:105px;height:34px;border-radius:18px;background:#fff4e7;color:#4d1826;font-size:11px;font-weight:800;letter-spacing:.08em;padding:0 18px}
+@media(max-width:1050px){.oda-like-bar{grid-template-columns:175px 1fr auto}.oda-like-nav{gap:18px}.oda-like-nav a:nth-child(n+6){display:none}.oda-like-logo img{width:145px}}
+@media(max-width:760px){.oda-like-header{padding:4px 0}.oda-like-bar{width:calc(100% - 8px);min-height:64px;border-radius:32px;grid-template-columns:1fr auto;padding:0 14px}.oda-like-nav{display:none}.oda-like-actions .oda-lang{display:none}.oda-like-logo img{width:135px}.oda-cta{min-width:92px;height:32px;padding:0 14px}}
