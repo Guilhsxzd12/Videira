@@ -19,3 +19,16 @@
 .site-header{background:transparent!important;padding:8px 0 0!important;border:0!important}
 body:has(.hero) .site-header{position:absolute!important;top:0!important;left:0!important;right:0!important}
 body:has(.hero) .header-bar{background:rgba(73,24,38,.78)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
+
+/* Mantém o header flutuante e fixo durante o scroll */
+body:has(.hero) .site-header{
+  position:fixed!important;
+  top:0!important;
+  left:0!important;
+  right:0!important;
+  z-index:120!important;
+  background:transparent!important;
+}
+body:has(.hero) .hero{
+  padding-top:86px!important;
+}
