@@ -1,134 +1,74 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Videira Vinhoteca</title>
-<meta name="description" content="Catálogo de vinhos selecionados pela Videira Vinhoteca.">
-<link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-<header class="oda-header">
-  <div class="oda-header__inner">
-    <a class="oda-brand" href="/" aria-label="Videira"><img src="/assets/videira-logo.svg" alt="Videira"></a>
-    <nav class="oda-nav" aria-label="Principal">
-      <a href="/">INÍCIO</a>
-      <a href="/loja.html">VINHOS</a>
-      <a href="/vinicolas.html">VINÍCOLAS</a>
-      <a href="/uvas.html">UVAS</a>
-      <a href="/regioes.html">REGIÕES</a>
-      <a href="#sobre">SOBRE</a>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Videira Vinhoteca</title><link rel="stylesheet" href="/styles.css"></head><body>
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="/">Videira</a>
+    <form class="global-search" action="/loja.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input name="q" placeholder="Pesquisar vinhos, uvas, regiões ou vinícolas">
+    </form>
+    <nav class="top-actions">
+      <a href="/loja.html">Loja</a>
+      <a class="bag" href="/loja.html" aria-label="Catálogo"><svg viewBox="0 0 24 24"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></a>
     </nav>
-    <div class="oda-actions">
-      <button class="lang" type="button">PT</button>
-      <a class="oda-buy" href="/loja.html">CATÁLOGO</a>
-    </div>
+  </div>
+  <div class="navrow">
+    <nav class="shell navlinks">
+      <a href="/loja.html">Vinhos</a>
+      <a href="/vinicolas.html">Vinícolas</a>
+      <a href="/uvas.html">Uvas</a>
+      <a href="/regioes.html">Regiões</a>
+      <a href="/#harmonizacoes">Harmonizações</a>
+      <a href="/#sobre">Sobre</a>
+    </nav>
   </div>
 </header>
-
 <main>
-  <section class="intro">
-    <div class="intro__content">
-      <p class="eyebrow">VIDEIRA VINHOTECA</p>
-      <h1>Descubra vinhos que combinam com você.</h1>
-      <p class="intro__lead">Explore rótulos por estilo, uva, região e vinícola. Compare informações e peça seu orçamento em poucos cliques.</p>
-      <div class="intro__search">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.2-4.2"/></svg>
-        <input id="globalSearch" placeholder="Pesquisar vinho, uva, região ou vinícola">
-        <button id="searchBtn">Buscar</button>
-      </div>
-    </div>
-    <div class="intro__visual">
-      <div class="glass glass--one"></div>
-      <div class="glass glass--two"></div>
-      <div class="bottle-art"><span>VIDEIRA</span></div>
-    </div>
-  </section>
+<section class="hero shell">
+  <div class="hero-copy">
+    <span class="eyebrow">SELEÇÃO VIDEIRA</span>
+    <h1>Encontre o vinho certo para cada momento</h1>
+    <p>Descubra rótulos por estilo, uva, região e produtor.</p>
+    <a class="primary-btn" href="/loja.html">Explorar vinhos</a>
+  </div>
+  <div class="hero-art"><div class="hero-bottle"><span>VIDEIRA</span></div><div class="hero-glass"></div></div>
+</section>
 
-  <section class="wine-types shell">
-    <div class="section-heading">
-      <div>
-        <span class="kicker">EXPLORE</span>
-        <h2>Encontre pelo seu estilo</h2>
-      </div>
-    </div>
-    <div class="type-row">
-      <a class="type-card" href="/loja.html?tipo=tinto"><div class="type-orb red"></div><strong>Tinto</strong><small>Encorpados e intensos</small></a>
-      <a class="type-card" href="/loja.html?tipo=branco"><div class="type-orb white"></div><strong>Branco</strong><small>Frescos e aromáticos</small></a>
-      <a class="type-card" href="/loja.html?tipo=rose"><div class="type-orb rose"></div><strong>Rosé</strong><small>Leves e versáteis</small></a>
-      <a class="type-card" href="/loja.html?tipo=espumante"><div class="type-orb sparkling"></div><strong>Espumante</strong><small>Para celebrar</small></a>
-      <a class="type-card" href="/loja.html?tipo=doce"><div class="type-orb dessert"></div><strong>Sobremesa</strong><small>Doces e envolventes</small></a>
-      <a class="type-card" href="/loja.html?tipo=fortificado"><div class="type-orb fortified"></div><strong>Fortificado</strong><small>Intensos e complexos</small></a>
-    </div>
-  </section>
+<section class="shell category-section">
+  <div class="section-head"><div><h2>Explore por tipo</h2><p>Comece pelo estilo que combina com você.</p></div></div>
+  <div class="category-row">
+    <a href="/loja.html?tipo=tinto" class="category"><div class="cat-img tinto"></div><b>Tintos</b></a>
+    <a href="/loja.html?tipo=branco" class="category"><div class="cat-img branco"></div><b>Brancos</b></a>
+    <a href="/loja.html?tipo=rose" class="category"><div class="cat-img rose"></div><b>Rosés</b></a>
+    <a href="/loja.html?tipo=espumante" class="category"><div class="cat-img espumante"></div><b>Espumantes</b></a>
+    <a href="/loja.html?tipo=doce" class="category"><div class="cat-img doce"></div><b>Sobremesa</b></a>
+    <a href="/loja.html?tipo=fortificado" class="category"><div class="cat-img fortificado"></div><b>Fortificados</b></a>
+  </div>
+</section>
 
-  <section class="shelf shell">
-    <div class="section-heading">
-      <div>
-        <span class="kicker">SELEÇÃO VIDEIRA</span>
-        <h2>Ofertas para você</h2>
-        <p>Rótulos de exemplo para visualizar o catálogo.</p>
-      </div>
-      <a class="see-all" href="/loja.html">Ver tudo</a>
-    </div>
-    <div class="rail-wrap">
-      <button class="rail-arrow prev" aria-label="Anterior">‹</button>
-      <div class="wine-rail" id="offers"></div>
-      <button class="rail-arrow next" aria-label="Próximo">›</button>
-    </div>
-  </section>
+<section class="shell shelf">
+  <div class="section-head"><div><h2>Descobertas da semana</h2><p>Uma seleção para conhecer novos estilos.</p></div><a href="/loja.html" class="outline-btn">Ver tudo</a></div>
+  <div class="rail-shell"><button class="rail-arrow prev">‹</button><div class="wine-rail" id="discover"></div><button class="rail-arrow next">›</button></div>
+</section>
 
-  <section class="feature-grid shell">
-    <a href="/regioes.html" class="feature feature--region">
-      <span>REGIÕES</span>
-      <h3>Viaje pelos grandes terroirs</h3>
-      <p>Argentina, França, Itália, Chile, Brasil e muito mais.</p>
-    </a>
-    <a href="/uvas.html" class="feature feature--grape">
-      <span>UVAS</span>
-      <h3>Entenda o perfil de cada variedade</h3>
-      <p>Malbec, Chardonnay, Chenin Blanc, Cabernet Sauvignon e outras.</p>
-    </a>
-  </section>
+<section class="shell promo-grid">
+  <a class="promo region-promo" href="/regioes.html"><span>REGIÕES</span><h3>Explore grandes terroirs</h3><p>Argentina, França, Itália, Chile, Brasil e muito mais.</p></a>
+  <a class="promo grape-promo" href="/uvas.html"><span>UVAS</span><h3>Conheça as principais variedades</h3><p>Malbec, Chardonnay, Chenin Blanc, Cabernet Sauvignon e outras.</p></a>
+</section>
 
-  <section class="shelf shell">
-    <div class="section-heading">
-      <div>
-        <span class="kicker">DESTAQUES</span>
-        <h2>Mais procurados</h2>
-        <p>Uma prateleira para navegar, arrastar e comparar.</p>
-      </div>
-      <a class="see-all" href="/loja.html">Ver tudo</a>
-    </div>
-    <div class="rail-wrap">
-      <button class="rail-arrow prev" aria-label="Anterior">‹</button>
-      <div class="wine-rail" id="popular"></div>
-      <button class="rail-arrow next" aria-label="Próximo">›</button>
-    </div>
-  </section>
+<section class="shell shelf">
+  <div class="section-head"><div><h2>Mais bem avaliados</h2><p>Rótulos que se destacam entre os apreciadores.</p></div><a href="/loja.html" class="outline-btn">Ver tudo</a></div>
+  <div class="rail-shell"><button class="rail-arrow prev">‹</button><div class="wine-rail" id="rated"></div><button class="rail-arrow next">›</button></div>
+</section>
 
-  <section class="manifesto" id="sobre">
-    <div class="manifesto__inner shell">
-      <span class="kicker kicker--light">VIDEIRA</span>
-      <h2>Mais do que escolher uma garrafa.</h2>
-      <p>Um catálogo pensado para ajudar você a descobrir estilos, origens e produtores com mais contexto e menos complicação.</p>
-      <a href="/loja.html">EXPLORAR CATÁLOGO</a>
-    </div>
-  </section>
+<section class="harmonize" id="harmonizacoes"><div class="shell"><h2>Harmonizações perfeitas</h2><p>Descubra combinações para valorizar cada taça.</p><a class="light-btn" href="/loja.html">Explorar catálogo</a></div></section>
 </main>
-
-<footer class="footer">
-  <div class="shell footer__grid">
-    <div><div class="footer-brand">Videira</div><p>Curadoria de vinhos, regiões e produtores.</p></div>
+<footer class="footer" id="sobre">
+  <div class="shell footer-grid">
+    <div><div class="footer-brand">Videira</div><p>Um catálogo para descobrir vinhos, uvas, regiões e produtores.</p></div>
     <div><b>Explorar</b><a href="/loja.html">Vinhos</a><a href="/vinicolas.html">Vinícolas</a><a href="/uvas.html">Uvas</a><a href="/regioes.html">Regiões</a></div>
-    <div><b>Atendimento</b><a href="#">Como funciona</a><a href="#">Pedir orçamento</a><a href="#">Contato</a></div>
+    <div><b>Ajuda</b><a href="#">Como funciona</a><a href="#">Perguntas frequentes</a><a href="#">Fale conosco</a></div>
+    <div><b>Legal</b><a href="#">Privacidade</a><a href="#">Termos de uso</a></div>
   </div>
 </footer>
-
-<a class="whatsapp" href="#" aria-label="WhatsApp">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.6A11.8 11.8 0 0 0 12.1.1 11.9 11.9 0 0 0 1.8 17.9L.1 24l6.3-1.7A12 12 0 0 0 12 23.7h.1A11.9 11.9 0 0 0 20.5 3.6Zm-8.4 18a9.9 9.9 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.9 9.9 0 1 1 12.1 21.6Zm5.4-7.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3Z"/></svg>
-</a>
-
-<script src="/app.js"></script>
-</body>
-</html>
+<a class="whatsapp" href="#" aria-label="WhatsApp">WA</a>
+<script src="/app.js"></script></body></html>
