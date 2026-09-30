@@ -1,44 +1,51 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Catálogo | Videira</title>
-<style>
-html,body{margin:0;background:#fff;font-family:Arial,Helvetica,sans-serif}.snapshot-loading{min-height:100vh;display:grid;place-items:center;color:#555}.snapshot-loading b{font-size:20px}
-</style></head><body><div class="snapshot-loading"><b>Carregando Videira...</b></div>
-<script>
-(async()=>{
- const parts=["/snapshot/vshop-01.part","/snapshot/vshop-02.part","/snapshot/vshop-03.part","/snapshot/vshop-04.part"];
- const html=(await Promise.all(parts.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(p);return r.text()})))).join("");
- document.body.innerHTML=html;
- const style=document.createElement("style");
- style.textContent=`
- a[aria-label="vivino.com"] svg{display:none!important}
- a[aria-label="vivino.com"]{min-width:145px!important;display:flex!important;align-items:center!important;text-decoration:none!important}
- a[aria-label="vivino.com"]::after{content:"VIDEIRA";font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:800;letter-spacing:2px;color:#ba1628}
- `;
- document.head.appendChild(style);
- const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
- const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
- nodes.forEach(n=>{
-   if(!n.parentElement||["SCRIPT","STYLE"].includes(n.parentElement.tagName))return;
-   let v=n.nodeValue;
-   if(v.includes("Best offers for you"))v=v.replace("Best offers for you","Descobertas da semana");
-   if(v.includes("Mais vendidos em Brasil"))v=v.replace("Mais vendidos em Brasil","Mais procurados no Brasil");
-   if(v.trim()==="Adicionar")v="Pedir orçamento";
-   if(v.includes("Vivino"))v=v.replaceAll("Vivino","Videira");
-   n.nodeValue=v;
- });
- document.querySelectorAll("a").forEach(a=>{
-   const h=a.getAttribute("href")||"";
-   if(h==="index.html"||/vivino\.com\/(BR\/pt-BR\/)?$/.test(h))a.href="/";
-   else if(h.includes("/explore"))a.href="/loja.html";
-   else if(h.includes("vivino.com")&&h.includes("/w/"))a.href="/vinho.html";
- });
- document.querySelectorAll("form").forEach(f=>{
-   const q=f.querySelector('input[name="q"]');
-   if(q)f.addEventListener("submit",e=>{e.preventDefault();location.href="/loja.html?q="+encodeURIComponent(q.value||"")});
- });
- document.querySelectorAll("button").forEach(b=>{
-   if((b.textContent||"").trim()==="Pedir orçamento")b.addEventListener("click",e=>{
-     e.preventDefault();window.open("https://wa.me/?text="+encodeURIComponent("Olá! Gostaria de pedir um orçamento de vinho na Videira."),"_blank","noopener");
-   });
- });
-})().catch(err=>{document.body.innerHTML='<div class="snapshot-loading"><b>Erro ao carregar a página.</b></div>';console.error(err)});
-</script></body></html>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Catálogo de vinhos | Videira</title><link rel="stylesheet" href="/styles.css"></head><body>
+<header class="viv-header">
+  <div class="viv-top shell">
+    <a class="viv-logo" href="/">VIDEIRA</a>
+    <form class="viv-search" action="/loja.html">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input name="q" placeholder="Pesquisar vinhos">
+    </form>
+    <div class="viv-meta">
+      <div><small>Enviar para</small><b>Brasil</b></div>
+      <div><small>Idioma</small><b>Português (Brasil)</b></div>
+      <a class="viv-icon" href="/loja.html" aria-label="Catálogo"><svg viewBox="0 0 24 24"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></a>
+    </div>
+  </div>
+  <div class="viv-nav"><div class="shell">
+    <a href="/loja.html"><span class="nav-ico">▦</span> Loja</a>
+    <a href="/loja.html"><span class="nav-ico">♧</span> Vinhos</a>
+    <a href="/vinicolas.html"><span class="nav-ico">◉</span> Vinícolas</a>
+  </div></div>
+</header>
+<main class="shell shop-layout">
+<aside class="filters-panel">
+  <section><h3>Tipos de vinho</h3><label><input type="checkbox" value="Tinto"> Tinto</label><label><input type="checkbox" value="Branco"> Branco</label><label><input type="checkbox" value="Espumante"> Vinho espumante</label><label><input type="checkbox" value="Rosé"> Rosé</label><label><input type="checkbox" value="Sobremesa"> Sobremesa</label><label><input type="checkbox" value="Fortificado"> Fortificado</label></section>
+  <section><h3>Faixa de Preços <small>(BRL)</small></h3><input id="priceRange" type="range" min="0" max="400" value="400"><div id="priceValue">R$0 – R$400</div><label><input type="checkbox"> Mostrar somente vinhos com desconto</label></section>
+  <section><h3>Classificação média</h3><label><input type="radio" name="rating" value="4.2"> 4.2+ <small>Muito raro</small></label><label><input type="radio" name="rating" value="3.8"> 3.8+ <small>Bom</small></label><label><input type="radio" name="rating" value="3.6"> 3.6+ <small>Comum</small></label><label><input type="radio" name="rating" value="0" checked> Qualquer classificação</label></section>
+  <section><h3>Uvas</h3><label><input type="checkbox" class="grape-filter" value="Cabernet Sauvignon"> Cabernet Sauvignon</label><label><input type="checkbox" class="grape-filter" value="Malbec"> Malbec</label><label><input type="checkbox" class="grape-filter" value="Pinot Noir"> Pinot Noir</label><label><input type="checkbox" class="grape-filter" value="Carménère"> Carménère</label><label><input type="checkbox" class="grape-filter" value="Shiraz/Syrah"> Shiraz/Syrah</label><label><input type="checkbox" class="grape-filter" value="Cabernet Franc"> Cabernet Franc</label><label><input type="checkbox" class="grape-filter" value="Primitivo"> Primitivo</label><label><input type="checkbox" class="grape-filter" value="Tannat"> Tannat</label><label><input type="checkbox" class="grape-filter" value="Sangiovese"> Sangiovese</label><label><input type="checkbox" class="grape-filter" value="Tempranillo"> Tempranillo</label></section>
+  <section><h3>Regiões</h3><label><input type="checkbox" class="region-filter" value="Mendoza"> Mendoza</label><label><input type="checkbox" class="region-filter" value="Serra Gaúcha"> Serra Gaúcha</label><label><input type="checkbox" class="region-filter" value="Bordeaux"> Bordeaux</label><label><input type="checkbox" class="region-filter" value="Vale do Maipo"> Vale do Maipo</label><label><input type="checkbox" class="region-filter" value="Puglia"> Puglia</label><label><input type="checkbox" class="region-filter" value="Toscana"> Toscana</label></section>
+  <section><h3>Países</h3><label><input type="checkbox"> Chile</label><label><input type="checkbox"> Argentina</label><label><input type="checkbox"> Itália</label><label><input type="checkbox"> Brasil</label><label><input type="checkbox"> França</label><label><input type="checkbox"> Portugal</label><label><input type="checkbox"> Espanha</label></section>
+  <section><h3>Harmonizações com comidas</h3><label><input type="checkbox"> Carne de vaca</label><label><input type="checkbox"> Cordeiro</label><label><input type="checkbox"> Aves</label><label><input type="checkbox"> Massa</label><label><input type="checkbox"> Carne de porco</label></section>
+</aside>
+<section class="shop-main">
+  <div class="shop-title"><div><h1>Vinhos</h1><p id="resultCount">Exibindo 1-8 de 8 VINHOS</p></div><label>Classificar: <select id="sort"><option>Recomendados</option><option>Menor preço</option><option>Maior preço</option><option>Melhor avaliação</option></select></label></div>
+  <div id="catalog" class="shop-grid"></div>
+</section>
+</main>
+<section class="trust">
+  <div class="shell">
+    <h2>Usado por milhares de pessoas para descobrir o vinho certo, sempre.</h2>
+    <div class="trust-grid">
+      <div><span class="trust-ico">01</span><p>A maior comunidade de vinhos da Videira</p></div>
+      <div><span class="trust-ico">02</span><p>Atendimento para ajudar na escolha do seu vinho</p></div>
+      <div><span class="trust-ico">03</span><p>Pedido de orçamento simples e direto</p></div>
+      <div><span class="trust-ico">04</span><p>Compare estilos, regiões e avaliações antes de pedir</p></div>
+    </div>
+  </div>
+</section>
+<footer class="viv-footer"><div class="shell footer-links">
+  <a href="#">Aplicativo</a><a href="/#sobre">Sobre</a><a href="#">Contato</a><a href="/uvas.html">Uvas</a><a href="/regioes.html">Regiões</a><a href="/vinicolas.html">Vinícolas</a><a href="#">Jurídico</a><a href="#">Mapa do site</a>
+</div><div class="shell copyright">© Videira 2026</div></footer>
+<a class="chat-fab" href="#">≡</a>
+<script src="/app.js"></script></body></html>
