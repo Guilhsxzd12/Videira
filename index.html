@@ -1,51 +1,146 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Videira — Compre o vinho certo</title><link rel="stylesheet" href="/styles.css"></head><body>
-<header class="viv-header">
-  <div class="viv-top shell">
-    <a class="viv-logo" href="/">VIDEIRA</a>
-    <form class="viv-search" action="/loja.html">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-      <input name="q" placeholder="Pesquisar vinhos">
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Videira Vinhoteca</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="vh-header">
+  <div class="vh-header__inner shell">
+    <a class="vh-logo" href="/">
+      <img src="/assets/videira-logo.svg" alt="Videira">
+    </a>
+    <nav class="vh-nav">
+      <a href="/">INÍCIO</a>
+      <a href="/uvas.html">UVAS <span>⌄</span></a>
+      <a href="/vinicolas.html">BODEGAS <span>⌄</span></a>
+    </nav>
+    <form class="vh-search" action="/loja.html">
+      <input name="q" placeholder="Pesquisar">
+      <button aria-label="Pesquisar">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      </button>
     </form>
-    <div class="viv-meta">
-      <div><small>Enviar para</small><b>Brasil</b></div>
-      <div><small>Idioma</small><b>Português (Brasil)</b></div>
-      <a class="viv-icon" href="/loja.html" aria-label="Catálogo"><svg viewBox="0 0 24 24"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></a>
-    </div>
+    <a class="vh-cart" href="/loja.html" aria-label="Carrinho">
+      <svg viewBox="0 0 24 24"><path d="M3 4h2l2 11h10l2-8H7"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+    </a>
   </div>
-  <div class="viv-nav"><div class="shell">
-    <a href="/loja.html"><span class="nav-ico">▦</span> Loja</a>
-    <a href="/loja.html"><span class="nav-ico">♧</span> Vinhos</a>
-    <a href="/vinicolas.html"><span class="nav-ico">◉</span> Vinícolas</a>
-  </div></div>
 </header>
-<main>
-<section class="top-title shell"><h1>Compre vinhos mais bem avaliados</h1></section>
-<section class="types shell">
-  <a href="/loja.html?tipo=tinto"><div class="type-circle c1"><span class="type-bottle red"></span><span class="type-glass red"></span></div><b>Tinto</b></a>
-  <a href="/loja.html?tipo=branco"><div class="type-circle c2"><span class="type-bottle gold"></span><span class="type-glass gold"></span></div><b>Branco</b></a>
-  <a href="/loja.html?tipo=rose"><div class="type-circle c3"><span class="type-bottle rose"></span><span class="type-glass rose"></span></div><b>Rosé</b></a>
-  <a href="/loja.html?tipo=espumante"><div class="type-circle c4"><span class="type-bottle dark"></span><span class="type-glass gold"></span></div><b>Vinho espumante</b></a>
-  <a href="/loja.html?tipo=sobremesa"><div class="type-circle c5"><span class="type-bottle amber"></span><span class="type-glass amber"></span></div><b>Sobremesa</b></a>
-  <a href="/loja.html?tipo=fortificado"><div class="type-circle c6"><span class="type-bottle dark"></span><span class="type-glass amber"></span></div><b>Fortificado</b></a>
-</section>
 
-<section class="shelf shell"><div class="shelf-head"><div><h2>Best offers for you</h2><p>Great value. Seamless service. Brilliant wines from Videira.</p></div><a class="view-all" href="/loja.html">Ver tudo</a></div><div class="rail-wrap"><button class="arrow prev">‹</button><div class="product-rail" id="offers"></div><button class="arrow next">›</button></div></section>
-<section class="shelf shell"><div class="shelf-head"><div><h2>Mais vendidos em Brasil</h2></div></div><div class="rail-wrap"><button class="arrow prev">‹</button><div class="product-rail" id="best"></div><button class="arrow next">›</button></div></section>
-<section class="shelf shell"><div class="shelf-head"><div><h2>Price drops</h2></div><a class="view-all" href="/loja.html">Ver tudo</a></div><div class="rail-wrap"><button class="arrow prev">‹</button><div class="product-rail" id="drops"></div><button class="arrow next">›</button></div></section>
-<section class="trust">
-  <div class="shell">
-    <h2>Usado por milhares de pessoas para descobrir o vinho certo, sempre.</h2>
-    <div class="trust-grid">
-      <div><span class="trust-ico">01</span><p>A maior comunidade de vinhos da Videira</p></div>
-      <div><span class="trust-ico">02</span><p>Atendimento para ajudar na escolha do seu vinho</p></div>
-      <div><span class="trust-ico">03</span><p>Pedido de orçamento simples e direto</p></div>
-      <div><span class="trust-ico">04</span><p>Compare estilos, regiões e avaliações antes de pedir</p></div>
+<main>
+  <section class="hero-slider" id="heroSlider">
+    <div class="hero-slide active">
+      <div class="hero-slide__content">
+        <span>SELEÇÃO VIDEIRA</span>
+        <h1>Descubra vinhos para cada momento</h1>
+        <p>Uma curadoria de rótulos, uvas e bodegas para você explorar.</p>
+        <a href="/loja.html">EXPLORAR CATÁLOGO</a>
+      </div>
     </div>
-  </div>
-</section>
+    <div class="hero-slide">
+      <div class="hero-slide__content">
+        <span>NOVAS DESCOBERTAS</span>
+        <h1>Conheça novas bodegas</h1>
+        <p>Produtores, regiões e histórias por trás de cada garrafa.</p>
+        <a href="/vinicolas.html">CONHECER BODEGAS</a>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide__content">
+        <span>EXPLORE POR UVA</span>
+        <h1>Encontre seu estilo favorito</h1>
+        <p>Malbec, Cabernet Franc, Chenin, Merlot e muito mais.</p>
+        <a href="/uvas.html">EXPLORAR UVAS</a>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <button class="active" data-slide="0"></button>
+      <button data-slide="1"></button>
+      <button data-slide="2"></button>
+    </div>
+  </section>
+
+  <section class="shell quick-types">
+    <a href="/loja.html?tipo=tinto"><span></span><b>Tintos</b></a>
+    <a href="/loja.html?tipo=branco"><span></span><b>Brancos</b></a>
+    <a href="/loja.html?tipo=rose"><span></span><b>Rosés</b></a>
+    <a href="/loja.html?tipo=espumante"><span></span><b>Espumantes</b></a>
+    <a href="/loja.html?tipo=frizante"><span></span><b>Frizantes</b></a>
+    <a href="/loja.html"><span></span><b>Outros</b></a>
+  </section>
+
+  <section class="shelf shell">
+    <div class="section-head">
+      <div><h2>Best offers for you</h2><p>Great value. Seamless service. Brilliant wines from Videira.</p></div>
+      <a href="/loja.html">VER TUDO</a>
+    </div>
+    <div class="rail-wrap">
+      <button class="rail-arrow prev">‹</button>
+      <div class="wine-rail" id="offers"></div>
+      <button class="rail-arrow next">›</button>
+    </div>
+  </section>
+
+  <section class="shelf shell">
+    <div class="section-head">
+      <div><h2>Malbecs</h2><p>Vinhos intensos, frutados e cheios de personalidade.</p></div>
+      <a href="/loja.html?uva=malbec">VER TUDO</a>
+    </div>
+    <div class="rail-wrap">
+      <button class="rail-arrow prev">‹</button>
+      <div class="wine-rail" id="malbecs"></div>
+      <button class="rail-arrow next">›</button>
+    </div>
+  </section>
+
+  <section class="shelf shell">
+    <div class="section-head">
+      <div><h2>Cabernet Franc</h2><p>Elegância, frescor e notas herbais em destaque.</p></div>
+      <a href="/loja.html?uva=cabernet-franc">VER TUDO</a>
+    </div>
+    <div class="rail-wrap">
+      <button class="rail-arrow prev">‹</button>
+      <div class="wine-rail" id="cabernet"></div>
+      <button class="rail-arrow next">›</button>
+    </div>
+  </section>
+
+  <section class="shell grapes-explore">
+    <h2>Explore as Uvas</h2>
+    <div class="grape-rail">
+      <a href="/loja.html?uva=malbec"><span></span><b>malbec</b></a>
+      <a href="/loja.html?uva=bonarda"><span></span><b>bonarda</b></a>
+      <a href="/loja.html?uva=pinot-noir"><span></span><b>Pinot Noir</b></a>
+      <a href="/loja.html?uva=cabernet-franc"><span></span><b>Cab. Franc</b></a>
+      <a href="/loja.html?uva=chenin"><span></span><b>Chenin</b></a>
+      <a href="/loja.html?uva=merlot"><span></span><b>Merlot</b></a>
+    </div>
+  </section>
+
+  <section class="shelf shell wineries">
+    <div class="section-head">
+      <div><h2>Conheça as Vinícolas</h2><p>Produtores em destaque no catálogo Videira.</p></div>
+      <a href="/vinicolas.html">VER TUDO</a>
+    </div>
+    <div class="winery-rail">
+      <a class="winery-card" href="/loja.html?vinicola=Santa%20Julia"><div class="winery-photo p1"></div><div><span>ARGENTINA</span><h3>Santa Julia</h3><p>Conheça os vinhos da bodega</p><button>conhecer</button></div></a>
+      <a class="winery-card" href="/loja.html?vinicola=Catena"><div class="winery-photo p2"></div><div><span>ARGENTINA</span><h3>Catena</h3><p>Conheça os vinhos da bodega</p><button>conhecer</button></div></a>
+      <a class="winery-card" href="/loja.html?vinicola=Garzon"><div class="winery-photo p3"></div><div><span>URUGUAI</span><h3>Garzón</h3><p>Conheça os vinhos da bodega</p><button>conhecer</button></div></a>
+    </div>
+  </section>
 </main>
-<footer class="viv-footer"><div class="shell footer-links">
-  <a href="#">Aplicativo</a><a href="/#sobre">Sobre</a><a href="#">Contato</a><a href="/uvas.html">Uvas</a><a href="/regioes.html">Regiões</a><a href="/vinicolas.html">Vinícolas</a><a href="#">Jurídico</a><a href="#">Mapa do site</a>
-</div><div class="shell copyright">© Videira 2026</div></footer>
-<a class="chat-fab" href="#" aria-label="WhatsApp">≡</a>
-<script src="/app.js"></script></body></html>
+
+<footer class="vh-footer">
+  <div class="shell vh-footer__main">
+    <div class="footer-logo"><img src="/assets/videira-logo.svg" alt="Videira"></div>
+    <div><h4>POLÍTICAS</h4><a href="#">Privacidade</a><a href="#">Termos</a></div>
+    <div><h4>NAVEGAR PELO MENU</h4><a href="/">Início</a><a href="/uvas.html">Uvas</a><a href="/vinicolas.html">Bodegas</a></div>
+    <div><h4>REDES SOCIAIS</h4><div class="socials"><a href="#">IG</a><a href="#">WA</a></div></div>
+  </div>
+  <div class="vh-footer__bottom">Videira Vinhoteca © 2026</div>
+</footer>
+
+<script src="/app.js"></script>
+</body></html>
