@@ -1,12 +1,1 @@
-{"rewrites":[
-{"source":"/adm","destination":"/adm.html"},
-{"source":"/loja","destination":"/loja.html"},
-{"source":"/uvas","destination":"/uvas.html"},
-{"source":"/vinicolas","destination":"/vinicolas.html"},
-{"source":"/regioes","destination":"/regioes.html"},
-{"source":"/vinho/:slug","destination":"/vinho.html?slug=:slug"},
-{"source":"/uva/:slug","destination":"/loja.html?uva=:slug"},
-{"source":"/vinicola/:slug","destination":"/loja.html?vinicola=:slug"},
-{"source":"/regiao/:slug","destination":"/loja.html?regiao=:slug"},
-{"source":"/pais/:slug","destination":"/loja.html?pais=:slug"}
-]}
+{"rewrites":[{"source":"/carrinho","destination":"/carrinho.html"},{"source":"/adm","destination":"/adm.html"},{"source":"/loja","destination":"/loja.html"},{"source":"/uvas","destination":"/uvas.html"},{"source":"/vinicolas","destination":"/vinicolas.html"},{"source":"/regioes","destination":"/regioes.html"},{"source":"/vinho/:slug","destination":"/vinho.html?slug=:slug"},{"source":"/uva/:slug","destination":"/loja.html?uva=:slug"},{"source":"/vinicola/:slug","destination":"/loja.html?vinicola=:slug"},{"source":"/regiao/:slug","destination":"/loja.html?regiao=:slug"},{"source":"/pais/:slug","destination":"/loja.html?pais=:slug"}]}
