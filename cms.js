@@ -1,5 +1,26 @@
-(async()=>{const db=window.videiraDb;if(!db)return;try{const [sr,mr,cr,tr,br]=await Promise.all([db.from('site_settings').select('*').eq('id',1).maybeSingle(),db.from('menu_items').select('*').eq('active',true).order('sort_order'),db.from('content_sections').select('*').eq('active',true).order('sort_order'),db.from('wine_types_catalog').select('*').eq('active',true).order('sort_order'),db.from('banners').select('*').eq('active',true).order('sort_order')]);const s=sr.data,m=mr.data||[],c=cr.data||[],t=tr.data||[],banners=br.data||[];window.__VIDEIRA_SETTINGS=s||{};if(s){const r=document.documentElement;if(s.color_primary)r.style.setProperty('--wine',s.color_primary);if(s.color_secondary)r.style.setProperty('--wine2',s.color_secondary);if(s.color_accent)r.style.setProperty('--green',s.color_accent);if(s.color_background)document.body.style.background=s.color_background;if(s.font_body)document.body.style.fontFamily=s.font_body;if(s.font_heading)r.style.setProperty('--heading-font',s.font_heading);if(s.custom_css){const x=document.createElement('style');x.textContent=s.custom_css;document.head.appendChild(x)}if(s.logo_url)document.querySelectorAll('img[alt="Videira"]').forEach(i=>i.src=s.logo_url);if(s.favicon_url){let l=document.querySelector('link[rel="icon"]');if(!l){l=document.createElement('link');l.rel='icon';document.head.appendChild(l)}l.href=s.favicon_url}document.querySelectorAll('[data-cms-footer]').forEach(e=>e.textContent=s.footer_text||'');document.querySelectorAll('a').forEach(a=>{const tx=(a.textContent||'').trim().toLowerCase();if(tx==='instagram'&&s.instagram)a.href=s.instagram;if(tx==='whatsapp'&&s.whatsapp)a.href='https://wa.me/'+String(s.whatsapp).replace(/\\D/g,'')});}
-if(m.length){const h=m.filter(x=>x.location==='header'),f=m.filter(x=>x.location==='footer');document.querySelectorAll('.premium-nav').forEach(n=>n.innerHTML=h.map(x=>'<a href="'+x.url+'">'+x.label+'</a>').join(''));const fd=document.querySelector('.premium-footer__grid>div:nth-child(2)');if(fd&&f.length)fd.innerHTML='<b>Explorar</b>'+f.map(x=>'<a href="'+x.url+'">'+x.label+'</a>').join('');}
-if(document.querySelector('.premium-hero')){const hs=banners.length?banners.map(x=>({subtitle:x.subtitle,title:x.title,body:x.description,button_label:x.button_label,button_url:x.button_link,image_url:x.image_url})):c.filter(x=>x.page==='home'&&x.section_key.startsWith('hero_'));hs.slice(0,3).forEach((h,i)=>{const sl=document.querySelectorAll('.premium-hero .hero-slide')[i];if(!sl)return;const k=sl.querySelector('.eyebrow'),tt=sl.querySelector('h1'),p=sl.querySelector('p'),b=sl.querySelector('.hero-primary');if(k&&h.subtitle)k.textContent=h.subtitle;if(tt&&h.title)tt.textContent=h.title;if(p&&h.body)p.textContent=h.body;if(b){if(h.button_label)b.textContent=h.button_label;if(h.button_url)b.href=h.button_url}if(h.image_url)sl.style.backgroundImage='linear-gradient(90deg,rgba(45,8,18,.86),rgba(45,8,18,.30)),url("'+h.image_url+'")';});}
-if(t.length&&document.querySelector('.premium-types__row'))document.querySelector('.premium-types__row').innerHTML=t.slice(0,6).map(x=>'<a href="/loja.html?tipo='+encodeURIComponent(x.name)+'"><div class="type-art"'+(x.image_url?' style="background-image:url('+JSON.stringify(x.image_url)+');background-size:cover;background-position:center"':'')+'></div><strong>'+x.name+'</strong><small>'+(x.description||'')+'</small></a>').join('');
+(async()=>{const db=window.videiraDb;if(!db)return;try{
+ const [sr,mr,cr,tr,br]=await Promise.all([
+  db.from('site_settings').select('*').eq('id',1).maybeSingle(),
+  db.from('menu_items').select('*').eq('active',true).order('sort_order'),
+  db.from('content_sections').select('*').eq('active',true).order('sort_order'),
+  db.from('wine_types_catalog').select('*').eq('active',true).order('sort_order'),
+  db.from('banners').select('*').eq('active',true).order('sort_order')
+ ]);
+ const s=sr.data,m=mr.data||[],c=cr.data||[],t=tr.data||[],banners=br.data||[];
+ window.__VIDEIRA_SETTINGS=s||{};
+ if(s){
+   const r=document.documentElement;
+   if(s.color_primary)r.style.setProperty('--wine',s.color_primary);
+   if(s.color_secondary)r.style.setProperty('--wine-mid',s.color_secondary);
+   if(s.color_accent)r.style.setProperty('--green',s.color_accent);
+   if(s.color_background)r.style.setProperty('--paper',s.color_background);
+   if(s.font_body)r.style.setProperty('--body',"'"+s.font_body+"',Arial,sans-serif");
+   if(s.font_heading)r.style.setProperty('--heading',"'"+s.font_heading+"',Georgia,serif");
+   if(s.custom_css){const x=document.createElement('style');x.textContent=s.custom_css;document.head.appendChild(x)}
+   if(s.logo_url)document.querySelectorAll('img[alt="Videira"]').forEach(i=>i.src=s.logo_url);
+   if(s.favicon_url){let l=document.querySelector('link[rel="icon"]');if(!l){l=document.createElement('link');l.rel='icon';document.head.appendChild(l)}l.href=s.favicon_url}
+   document.querySelectorAll('[data-cms-footer]').forEach(e=>e.textContent=s.footer_text||'Videira Vinhoteca © 2026');
+   document.querySelectorAll('[data-cms-whatsapp]').forEach(a=>{if(s.whatsapp)a.href='https://wa.me/'+String(s.whatsapp).replace(/\D/g,'')});
+   document.querySelectorAll('[data-cms-instagram]').forEach(a=>{if(s.instagram){let v=String(s.instagram).trim();a.href=v.startsWith('http')?v:'https://instagram.com/'+v.replace(/^@/,'')}})
+ }
 }catch(e){console.warn('CMS',e)}})();
