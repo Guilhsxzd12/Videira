@@ -69,3 +69,74 @@ body{padding-top:92px}
 .cart-item-price{display:block;margin-top:10px;font-size:18px;color:var(--wine)}
 .cart-total-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:16px 0}
 .cart-total-row span{color:var(--muted);font-size:13px}.cart-total-row strong{font-size:22px;color:var(--wine)}
+
+/* Ajustes finos para mobile */
+.product-image > img:not(.country-flag){
+  width:auto!important;
+  height:auto!important;
+  max-width:72%!important;
+  max-height:86%!important;
+  object-fit:contain!important;
+  padding:0!important;
+}
+@media(max-width:650px){
+  .site-header{padding-top:6px!important}
+  .header-bar{
+    min-height:58px!important;
+    height:58px!important;
+    grid-template-columns:86px 1fr 40px!important;
+    gap:8px!important;
+    padding:0 12px!important;
+    border-radius:29px!important;
+  }
+  .brand img{
+    width:72px!important;
+    height:42px!important;
+    object-fit:contain!important;
+  }
+  .header-cart{
+    width:38px!important;
+    height:38px!important;
+    justify-self:end!important;
+  }
+  .header-cart svg{width:20px!important}
+  .header-cart span{
+    min-width:17px!important;
+    height:17px!important;
+    font-size:9px!important;
+  }
+  body{padding-top:72px!important}
+  .hero{margin-top:-72px!important;padding-top:72px!important}
+  .product-card{
+    border-radius:16px!important;
+    padding:10px!important;
+  }
+  .product-image{
+    height:210px!important;
+    border-radius:12px!important;
+  }
+  .product-image > img:not(.country-flag){
+    max-width:60%!important;
+    max-height:82%!important;
+  }
+  .country-flag{
+    width:28px!important;
+    height:28px!important;
+    left:9px!important;
+    top:9px!important;
+  }
+  .product-meta{padding:12px 4px 2px!important}
+  .product-meta h3{
+    font-size:16px!important;
+    line-height:1.28!important;
+    min-height:0!important;
+    margin:5px 0 7px!important;
+  }
+  .product-sub{font-size:12px!important}
+  .product-price{font-size:19px!important;margin:10px 0!important}
+  .product-actions{gap:8px!important}
+  .product-actions button{height:42px!important}
+  .quote-btn{font-size:13px!important}
+  .save-btn{width:42px!important;flex:0 0 42px!important}
+  .catalog-grid{gap:18px!important}
+}
