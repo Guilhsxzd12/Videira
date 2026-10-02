@@ -140,3 +140,138 @@ body{padding-top:92px}
   .save-btn{width:42px!important;flex:0 0 42px!important}
   .catalog-grid{gap:18px!important}
 }
+
+/* ===== Responsive navigation + cross-device pass ===== */
+.menu-toggle{display:none;border:0;background:transparent;color:#fff;width:40px;height:40px;border-radius:50%;padding:10px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+.menu-toggle span{display:block;width:19px;height:1.8px;border-radius:2px;background:currentColor;transition:transform .18s ease,opacity .18s ease}
+.menu-toggle.active span:nth-child(1){transform:translateY(5.8px) rotate(45deg)}
+.menu-toggle.active span:nth-child(2){opacity:0}
+.menu-toggle.active span:nth-child(3){transform:translateY(-5.8px) rotate(-45deg)}
+.mobile-menu{position:fixed;z-index:115;left:0;right:0;top:0;padding:88px 14px 14px;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-12px);transition:opacity .18s ease,transform .18s ease,visibility .18s ease}
+.mobile-menu.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.mobile-menu-inner{width:min(720px,100%);margin:auto;background:rgba(255,255,255,.985);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 60px rgba(30,9,18,.22);padding:14px;color:var(--ink)}
+.mobile-main-link,.mobile-menu summary{display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:0 12px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;list-style:none}
+.mobile-menu summary::-webkit-details-marker{display:none}
+.mobile-menu summary:after{content:"+";font-size:20px;color:var(--wine);font-weight:400}
+.mobile-menu details[open] summary:after{content:"−"}
+.mobile-main-link:hover,.mobile-menu summary:hover{background:var(--wine-soft);color:var(--wine)}
+.mobile-submenu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;padding:5px 8px 10px}
+.mobile-submenu a{padding:10px 11px;border-radius:10px;background:#faf7f8;font-size:12px;color:#55484e}
+.mobile-submenu a:hover{background:var(--wine-soft);color:var(--wine)}
+.mobile-search{display:grid;grid-template-columns:1fr auto;gap:8px;padding:12px 8px 4px}
+.mobile-search input{min-width:0;border:1px solid var(--line);border-radius:22px;padding:11px 14px;outline:0}
+.mobile-search button{border:0;border-radius:22px;padding:0 16px;background:var(--wine);color:#fff;font-weight:700}
+body.menu-open{overflow:hidden}
+
+/* Tablet */
+@media(max-width:1000px){
+  .site-header{padding-top:8px!important}
+  .header-bar{
+    width:min(940px,calc(100% - 28px))!important;
+    grid-template-columns:135px 1fr 40px 42px!important;
+    gap:10px!important;
+    padding:0 14px!important;
+  }
+  .main-nav{display:none!important}
+  .menu-toggle{display:flex!important;grid-column:3}
+  .header-search{grid-column:2;display:flex!important}
+  .header-cart{grid-column:4}
+  .header-cta{display:none!important}
+  .brand{grid-column:1;grid-row:1}
+  .brand img{width:118px!important;height:46px!important}
+  .mobile-menu{padding-top:84px}
+  .hero{height:auto;min-height:600px}
+  .hero-inner{grid-template-columns:1fr!important;padding-top:44px;padding-bottom:54px}
+  .hero-copy{max-width:680px}
+  .hero h1{font-size:56px}
+  .type-grid{grid-template-columns:repeat(3,1fr)!important}
+  .winery-grid{grid-template-columns:repeat(2,1fr)!important}
+  .catalog-layout{grid-template-columns:220px 1fr!important;gap:24px!important}
+  .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .filters{top:88px!important}
+  .product-detail{grid-template-columns:.9fr 1.1fr!important;gap:38px!important}
+  .product-gallery{min-height:500px!important}
+  .footer-grid{grid-template-columns:1.4fr 1fr 1fr!important}
+  .footer-grid>div:nth-child(4){grid-column:2/4}
+}
+
+/* Mobile */
+@media(max-width:650px){
+  .shell{width:min(100% - 24px,1200px)!important}
+  .site-header{padding-top:7px!important}
+  .header-bar{
+    width:calc(100% - 24px)!important;
+    min-height:58px!important;
+    height:58px!important;
+    grid-template-columns:1fr 40px 40px!important;
+    gap:6px!important;
+    padding:0 12px!important;
+  }
+  .brand{grid-column:1!important}
+  .brand img{width:78px!important;height:42px!important}
+  .header-search{display:none!important}
+  .menu-toggle{grid-column:2!important;width:38px!important;height:38px!important}
+  .header-cart{grid-column:3!important;width:38px!important;height:38px!important}
+  .mobile-menu{padding:74px 12px 12px}
+  .mobile-menu-inner{border-radius:18px;padding:10px}
+  .mobile-submenu{grid-template-columns:1fr 1fr}
+  body{padding-top:72px!important}
+  .hero{margin-top:-72px!important;padding-top:72px!important;min-height:620px!important;height:auto!important}
+  .hero-inner{display:flex!important;align-items:flex-end!important;padding-top:105px!important;padding-bottom:56px!important}
+  .hero-copy{max-width:none!important}
+  .hero h1{font-size:48px!important;line-height:1.02!important;margin:12px 0 18px!important}
+  .hero p{font-size:16px!important;line-height:1.55!important}
+  .hero-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .btn{text-align:center!important;padding:13px 10px!important}
+  .section{padding:48px 0!important}
+  .section-heading{align-items:flex-start!important;gap:12px!important}
+  .section-heading h2{font-size:36px!important;line-height:1.03!important}
+  .section-heading .text-link{flex:0 0 auto;margin-top:28px}
+  .type-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+  .type-art{height:120px!important}
+  .product-rail,.grape-rail,.country-rail{gap:14px!important;padding-bottom:14px!important}
+  .product-card{flex:0 0 78vw!important;max-width:310px!important}
+  .product-image{height:260px!important}
+  .product-image>img:not(.country-flag){max-width:58%!important;max-height:84%!important}
+  .grape-card,.country-card{flex-basis:78vw!important;max-width:300px!important}
+  .editorial-grid{grid-template-columns:1fr!important;gap:14px!important}
+  .editorial-card{min-height:290px!important}
+  .editorial-card h3{font-size:32px!important}
+  .winery-grid{grid-template-columns:1fr!important}
+  .winery-card{min-height:330px!important}
+  .page-intro{padding:42px 0 24px!important}
+  .page-intro h1{font-size:44px!important}
+  .catalog-search{height:50px!important;margin-bottom:16px!important}
+  .catalog-toolbar{gap:10px!important;flex-wrap:wrap!important}
+  .filter-toggle{display:inline-flex!important;align-items:center;border:1px solid var(--line);background:#fff;border-radius:20px;padding:9px 14px;color:var(--wine);font-weight:700}
+  .catalog-layout{grid-template-columns:1fr!important;gap:16px!important}
+  .filters{display:none!important;position:static!important}
+  .filters.open{display:block!important}
+  .catalog-grid{grid-template-columns:1fr!important;gap:18px!important}
+  .catalog-grid .product-card{max-width:none!important;width:100%!important}
+  .catalog-grid .product-image{height:290px!important}
+  .product-detail{grid-template-columns:1fr!important;gap:28px!important}
+  .product-gallery{min-height:420px!important}
+  .product-info{padding-top:0!important}
+  .product-info h1{font-size:42px!important}
+  .facts{grid-template-columns:1fr 1fr!important}
+  .explore-grid{grid-template-columns:1fr!important}
+  .explore-visual{height:200px!important}
+  .cart-layout{grid-template-columns:1fr!important}
+  .cart-summary{position:static!important}
+  .footer-top-inner{min-height:0!important;padding:36px 0!important;align-items:flex-start!important}
+  .footer-top h2{font-size:32px!important}
+  .footer-grid{grid-template-columns:1fr 1fr!important;gap:28px 18px!important;padding:38px 0!important}
+  .footer-brand{grid-column:1/-1}
+  .footer-grid>div:nth-child(4){grid-column:auto!important}
+  .footer-bottom .shell{flex-direction:column!important;gap:5px!important;align-items:flex-start!important}
+}
+
+/* Small phones */
+@media(max-width:390px){
+  .hero h1{font-size:42px!important}
+  .hero-actions{grid-template-columns:1fr!important}
+  .mobile-submenu{grid-template-columns:1fr}
+  .type-grid{grid-template-columns:1fr 1fr!important}
+  .footer-grid{grid-template-columns:1fr!important}
+}
