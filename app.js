@@ -81,5 +81,46 @@ function pathInfo(){const p=decodeURIComponent(location.pathname).split('/').fil
  if(explore){const kind=document.querySelector('.explore-page')?.dataset.kind;let data=[];if(kind==='grapes')data=grapes;if(kind==='wineries')data=wineries;if(kind==='regions'){const map=new Map();wines.forEach(w=>{if(w.region&&!map.has(w.region))map.set(w.region,{name:w.region,description:w.country||''})});data=[...map.values()]}const stock=['https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1464638681273-096c166ab676?auto=format&fit=crop&w=800&q=80'];function draw(list){explore.innerHTML=list.map((x,i)=>{const href=kind==='grapes'?'/uva/'+slugify(x.name):kind==='wineries'?'/vinicola/'+slugify(x.name):'/regiao/'+slugify(x.name);return '<a class="explore-card" href="'+href+'"><div class="explore-visual" style="background-image:url('+JSON.stringify(x.image_url||stock[i%3])+')"></div><div class="explore-body"><h3>'+esc(x.name)+'</h3><p>'+esc(x.description||x.region||'Explore os rótulos relacionados.')+'</p><b>Ver rótulos</b></div></a>'}).join('')}draw(data);exploreSearch?.addEventListener('input',e=>draw(data.filter(x=>String(x.name).toLowerCase().includes(e.target.value.toLowerCase()))))}
 
  const cart=JSON.parse(localStorage.getItem('videiraCart')||'[]');const badge=document.getElementById('cartCount');if(badge)badge.textContent=cart.length;
+
+ const cartItemsEl=document.getElementById('cartItems');
+ const cartEmptyEl=document.getElementById('cartEmpty');
+ const cartTotalItemsEl=document.getElementById('cartTotalItems');
+ const cartTotalValueEl=document.getElementById('cartTotalValue');
+ const sendWhatsappBtn=document.getElementById('sendWhatsapp');
+ if(cartItemsEl){
+   const getCartItems=()=>{
+     const ids=JSON.parse(localStorage.getItem('videiraCart')||'[]');
+     return ids.map(id=>wines.find(w=>w.slug===id||slugify(w.slug||w.name)===slugify(id))).filter(Boolean);
+   };
+   const renderCart=()=>{
+     const items=getCartItems();
+     cartItemsEl.innerHTML=items.map(w=>{
+       const visual=w.image_url?'<img src="'+esc(w.image_url)+'" alt="'+esc(w.name)+'">':'<div class="bottle-fallback"></div>';
+       return '<article class="cart-item"><div class="cart-item-thumb">'+visual+'</div><div class="cart-item-info"><small>'+esc(w.winery||'Videira')+'</small><h3>'+esc(w.name)+'</h3><p>'+esc([w.region,w.country].filter(Boolean).join(', '))+'</p><strong class="cart-item-price">'+money(w.price)+'</strong></div><button class="cart-remove" data-remove-cart="'+esc(w.slug)+'">Remover</button></article>'
+     }).join('');
+     if(cartEmptyEl)cartEmptyEl.hidden=items.length>0;
+     if(cartTotalItemsEl)cartTotalItemsEl.textContent=items.length;
+     if(cartTotalValueEl)cartTotalValueEl.textContent=money(items.reduce((sum,w)=>sum+Number(w.price||0),0));
+     if(badge)badge.textContent=items.length;
+     if(sendWhatsappBtn)sendWhatsappBtn.disabled=!items.length;
+   };
+   renderCart();
+   document.addEventListener('click',e=>{
+     const rm=e.target.closest('[data-remove-cart]');
+     if(!rm)return;
+     let ids=JSON.parse(localStorage.getItem('videiraCart')||'[]');
+     ids=ids.filter(x=>x!==rm.dataset.removeCart);
+     localStorage.setItem('videiraCart',JSON.stringify(ids));
+     renderCart();
+   });
+   sendWhatsappBtn?.addEventListener('click',()=>{
+     const items=getCartItems();
+     if(!items.length)return;
+     const total=items.reduce((sum,w)=>sum+Number(w.price||0),0);
+     const lines=items.map((w,i)=>(i+1)+'. '+w.winery+' - '+w.name+' — '+money(w.price));
+     const msg=encodeURIComponent('Olá! Gostaria de solicitar um orçamento para os seguintes rótulos:\n\n'+lines.join('\n')+'\n\nTotal de referência: '+money(total)+'\n\nAguardo disponibilidade e confirmação dos valores.');
+     window.open('https://wa.me/5545999056277?text='+msg,'_blank','noopener');
+   });
+ }
  document.addEventListener('click',e=>{const add=e.target.closest('[data-cart]');if(add){const slug=add.dataset.cart,cur=JSON.parse(localStorage.getItem('videiraCart')||'[]');if(!cur.includes(slug))cur.push(slug);localStorage.setItem('videiraCart',JSON.stringify(cur));if(badge)badge.textContent=cur.length;add.textContent='✓';return}const b=e.target.closest('.quote-btn');if(!b)return;const w=wines.find(x=>x.slug===b.dataset.slug);if(!w)return;const wa='5545999056277',msg=encodeURIComponent('Olá! Gostaria de solicitar um orçamento para '+w.winery+' '+w.name+'.');window.open(wa?'https://wa.me/'+wa+'?text='+msg:'https://wa.me/?text='+msg,'_blank','noopener')})
 })();
