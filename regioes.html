@@ -1,42 +1,57 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#5b0c36">
+<title>Regiões | Videira</title>
+<meta name="description" content="Catálogo de vinhos, uvas, regiões e vinícolas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css"><title>Regiões | Videira</title></head><body><header class="site-header">
+<link rel="stylesheet" href="/styles.css"></head><body data-page="explore" data-kind="regions"><header class="site-header" data-site-header>
   <div class="shell header-bar">
-    <a class="brand" href="/" aria-label="Videira"><img src="https://rmyybeaepscmzbddnvzr.supabase.co/storage/v1/object/public/cms/1790945834287-Imagem-do-ChatGPT-29-de-set.-de-2026--20_00_50.png" alt="Videira"></a>
-    <nav class="main-nav" aria-label="Principal">
+    <a class="brand" href="/" aria-label="Videira Vinhoteca"><img src="https://rmyybeaepscmzbddnvzr.supabase.co/storage/v1/object/public/cms/1790945834287-Imagem-do-ChatGPT-29-de-set.-de-2026--20_00_50.png" alt="Videira"></a>
+    <nav class="desktop-nav" aria-label="Navegação principal">
       <a href="/">Início</a>
-      <div class="nav-item"><a class="nav-trigger" href="/loja">Vinhos <span class="nav-chevron">⌄</span></a><div class="nav-dropdown wines-dropdown"><div class="dropdown-intro"><span>EXPLORAR VINHOS</span><strong>Escolha pelo seu estilo</strong><p>Encontre rótulos por tipo e ocasião.</p></div><div class="dropdown-links"><a href="/loja?tipo=Tinto"><b>Tintos</b><small>Estrutura e intensidade</small></a><a href="/loja?tipo=Branco"><b>Brancos</b><small>Frescor e aromas</small></a><a href="/loja?tipo=Ros%C3%A9"><b>Rosés</b><small>Leves e versáteis</small></a><a href="/loja?tipo=Espumante"><b>Espumantes</b><small>Para celebrar</small></a><a href="/loja?tipo=Sobremesa"><b>Sobremesa</b><small>Doces e envolventes</small></a><a href="/loja" class="dropdown-all">Ver todos os vinhos →</a></div></div></div>
-      <div class="nav-item"><a class="nav-trigger" href="/uvas">Uvas <span class="nav-chevron">⌄</span></a><div class="nav-dropdown"><div class="dropdown-intro"><span>VARIEDADES</span><strong>Descubra pela uva</strong><p>Explore estilos e perfis aromáticos.</p></div><div class="dropdown-links"><a href="/uva/malbec"><b>Malbec</b><small>Frutado e intenso</small></a><a href="/uva/chardonnay"><b>Chardonnay</b><small>Versátil e elegante</small></a><a href="/uva/cabernet-franc"><b>Cabernet Franc</b><small>Fresco e herbal</small></a><a href="/uva/pinot-noir"><b>Pinot Noir</b><small>Delicado e perfumado</small></a><a href="/uva/chenin-blanc"><b>Chenin Blanc</b><small>Aromático e vibrante</small></a><a href="/uvas" class="dropdown-all">Ver todas as uvas →</a></div></div></div>
-      <div class="nav-item"><a class="nav-trigger" href="/vinicolas">Vinícolas <span class="nav-chevron">⌄</span></a><div class="nav-dropdown"><div class="dropdown-intro"><span>PRODUTORES</span><strong>Conheça as vinícolas</strong><p>Histórias e terroirs por trás dos rótulos.</p></div><div class="dropdown-links"><a href="/vinicola/santa-julia"><b>Santa Julia</b><small>Mendoza, Argentina</small></a><a href="/vinicola/d-v-catena"><b>D.V. Catena</b><small>Mendoza, Argentina</small></a><a href="/vinicola/catena-zapata"><b>Catena Zapata</b><small>Mendoza, Argentina</small></a><a href="/vinicola/garzon"><b>Garzón</b><small>Maldonado, Uruguai</small></a><a href="/vinicola/chandon"><b>Chandon</b><small>Serra Gaúcha, Brasil</small></a><a href="/vinicolas" class="dropdown-all">Ver todas as vinícolas →</a></div></div></div>
+      <div class="nav-group">
+        <a href="/loja">Vinhos <span>⌄</span></a>
+        <div class="mega-menu"><a href="/loja?tipo=Tinto">Tintos</a><a href="/loja?tipo=Branco">Brancos</a><a href="/loja?tipo=Ros%C3%A9">Rosés</a><a href="/loja?tipo=Espumante">Espumantes</a><a href="/loja?tipo=Sobremesa">Sobremesa</a><a class="mega-all" href="/loja">Ver todos</a></div>
+      </div>
+      <div class="nav-group">
+        <a href="/uvas">Uvas <span>⌄</span></a>
+        <div class="mega-menu"><a href="/uva/malbec">Malbec</a><a href="/uva/chardonnay">Chardonnay</a><a href="/uva/cabernet-franc">Cabernet Franc</a><a href="/uva/pinot-noir">Pinot Noir</a><a href="/uvas" class="mega-all">Ver todas</a></div>
+      </div>
+      <div class="nav-group">
+        <a href="/vinicolas">Vinícolas <span>⌄</span></a>
+        <div class="mega-menu" id="headerWineries"><a href="/vinicolas">Ver todas</a></div>
+      </div>
       <a href="/regioes">Regiões</a>
     </nav>
-    <form class="header-search" action="/loja"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.2-4.2"/></svg><input name="q" placeholder="Buscar no catálogo"></form>
-    <a class="header-cart" href="/carrinho" aria-label="Carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20.3 8H7.2"/><circle cx="10" cy="19" r="1.3"/><circle cx="18" cy="19" r="1.3"/></svg><span id="cartCount">0</span></a>
-    <a class="header-cta" href="/loja">Catálogo</a>
+    <form class="header-search" action="/loja"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4.2-4.2"></path></svg><input name="q" autocomplete="off" placeholder="Buscar no catálogo"></form>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="header-cart" href="/carrinho" aria-label="Carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20.3 8H7.2"></path><circle cx="10" cy="19" r="1.3"></circle><circle cx="18" cy="19" r="1.3"></circle></svg><span id="cartCount">0</span></a>
   </div>
-</header>
-  <main class="explore-page shell" data-kind="regions">
-    <div class="page-intro">
-      <span class="section-label">Videira</span>
-      <h1>Regiões</h1>
-      <p>Explore origens, terroirs e estilos do mundo do vinho.</p>
-      <input id="exploreSearch" class="explore-search" placeholder="Pesquisar">
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-panel">
+      <form class="mobile-search" action="/loja"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4.2-4.2"></path></svg><input name="q" placeholder="Buscar vinho, uva ou vinícola"></form>
+      <a class="mobile-main-link" href="/">Início</a>
+      <details><summary>Vinhos</summary><div class="mobile-submenu"><a href="/loja">Todos</a><a href="/loja?tipo=Tinto">Tintos</a><a href="/loja?tipo=Branco">Brancos</a><a href="/loja?tipo=Ros%C3%A9">Rosés</a><a href="/loja?tipo=Espumante">Espumantes</a></div></details>
+      <details><summary>Uvas</summary><div class="mobile-submenu"><a href="/uvas">Todas</a><a href="/uva/malbec">Malbec</a><a href="/uva/chardonnay">Chardonnay</a><a href="/uva/cabernet-franc">Cabernet Franc</a><a href="/uva/pinot-noir">Pinot Noir</a></div></details>
+      <details><summary>Vinícolas</summary><div class="mobile-submenu" id="mobileWineries"><a href="/vinicolas">Todas as vinícolas</a></div></details>
+      <a class="mobile-main-link" href="/regioes">Regiões</a>
+      <a class="mobile-main-link" href="/carrinho">Carrinho</a>
     </div>
-    <div class="explore-grid" id="exploreGrid"></div>
-  </main>
-  <footer class="site-footer">
-  <div class="footer-top"><div class="shell footer-top-inner"><div><span>VIDEIRA VINHOTECA</span><h2>Descubra bons vinhos sem complicação.</h2></div><a href="/loja">Explorar catálogo</a></div></div>
-  <div class="shell footer-grid">
-    <div class="footer-brand"><img src="https://rmyybeaepscmzbddnvzr.supabase.co/storage/v1/object/public/cms/1790945834287-Imagem-do-ChatGPT-29-de-set.-de-2026--20_00_50.png" alt="Videira"><p>Curadoria de vinhos, uvas, regiões e produtores para descobrir novos rótulos com contexto e personalidade.</p><div class="footer-socials"><a href="#" data-cms-instagram aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a><a href="https://wa.me/5545999056277" target="_blank" rel="noopener" data-cms-whatsapp aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.3 8.3 0 0 1-12.3 7.2L4 20l1.1-4.1a8.3 8.3 0 1 1 15.4-4.2Z"/><path d="M9 8.2c.2-.5.5-.5.8-.5h.4c.2 0 .4 0 .5.4l.8 1.8c.1.3.1.5-.1.7l-.7.8c-.2.2-.2.4 0 .7.6 1.1 1.5 2 2.6 2.6.3.2.5.1.7-.1l.9-1c.2-.2.4-.3.7-.1l1.8.8c.3.1.4.3.4.5 0 .3-.2 1.4-.9 2-.6.6-1.5.8-2.4.5-1.1-.3-2.5-1-4.1-2.4-1.3-1.1-2.2-2.5-2.7-3.6-.5-1.1-.5-2.1-.1-2.9Z"/></svg></a></div></div>
+  </div>
+</header><main class="explore-page shell">
+<section class="page-hero"><span class="kicker">Videira</span><h1>Regiões</h1><p>Explore origens, terroirs e estilos do mundo do vinho.</p><div class="explore-search-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4.2-4.2"></path></svg><input id="exploreSearch" class="explore-search" placeholder="Pesquisar"></div></section>
+<div class="explore-grid" id="exploreGrid"></div>
+</main><footer class="site-footer">
+  <div class="footer-cta">
+    <div class="shell footer-cta-inner"><div><span>VIDEIRA VINHOTECA</span><h2>Descubra bons vinhos sem complicação.</h2></div><a class="outline-light" href="/loja">Explorar catálogo</a></div>
+  </div>
+  <div class="shell footer-main">
+    <div class="footer-about"><img src="https://rmyybeaepscmzbddnvzr.supabase.co/storage/v1/object/public/cms/1790945834287-Imagem-do-ChatGPT-29-de-set.-de-2026--20_00_50.png" alt="Videira"><p>Curadoria de vinhos, uvas, regiões e produtores para descobrir novos rótulos com contexto e personalidade.</p><div class="footer-socials"><a href="#" data-cms-instagram aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></a><a href="https://wa.me/5545999056277" target="_blank" rel="noopener" data-cms-whatsapp aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.3 8.3 0 0 1-12.3 7.2L4 20l1.1-4.1a8.3 8.3 0 1 1 15.4-4.2Z"></path><path d="M9 8.2c.2-.5.5-.5.8-.5h.4c.2 0 .4 0 .5.4l.8 1.8c.1.3.1.5-.1.7l-.7.8c-.2.2-.2.4 0 .7.6 1.1 1.5 2 2.6 2.6.3.2.5.1.7-.1l.9-1c.2-.2.4-.3.7-.1l1.8.8c.3.1.4.3.4.5 0 .3-.2 1.4-.9 2-.6.6-1.5.8-2.4.5-1.1-.3-2.5-1-4.1-2.4-1.3-1.1-2.2-2.5-2.7-3.6-.5-1.1-.5-2.1-.1-2.9Z"></path></svg></a></div></div>
     <div><b>Explorar</b><a href="/loja">Vinhos</a><a href="/uvas">Uvas</a><a href="/vinicolas">Vinícolas</a><a href="/regioes">Regiões</a></div>
     <div><b>Descobrir</b><a href="/loja?tipo=Tinto">Tintos</a><a href="/loja?tipo=Branco">Brancos</a><a href="/loja?tipo=Espumante">Espumantes</a><a href="/loja?tipo=Ros%C3%A9">Rosés</a></div>
-    <div><b>Atendimento</b><a href="#">Como funciona</a><a href="#">Perguntas frequentes</a><a href="#" data-cms-whatsapp>Fale pelo WhatsApp</a></div>
+    <div><b>Atendimento</b><a href="https://wa.me/5545999056277" target="_blank" rel="noopener">WhatsApp</a><a href="#">Como funciona</a><a href="#">Perguntas frequentes</a><a href="#">Política de privacidade</a></div>
   </div>
-  <div class="footer-bottom"><div class="shell"><span data-cms-footer>Videira Vinhoteca © 2026</span><span>Catálogo de vinhos selecionados.</span></div></div>
-</footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/supabase-config.js"></script>
-<script src="/cms.js"></script>
-<script src="/app.js"></script></body></html>
+  <div class="footer-note"><div class="shell"><span data-cms-footer>Videira Vinhoteca © 2026</span><span>Venda responsável. Aprecie com moderação.</span></div></div>
+</footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/supabase-config.js"></script><script src="/cms.js"></script><script src="/app.js"></script></body></html>
