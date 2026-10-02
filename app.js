@@ -15,11 +15,23 @@ function saveCart(cart){localStorage.setItem('videiraCart',JSON.stringify(cart))
 function updateCartBadge(cart=normalizeCart()){const el=document.getElementById('cartCount');if(el)el.textContent=cart.reduce((s,x)=>s+x.qty,0)}
 function addToCart(slug,qty=1){const c=normalizeCart(),it=c.find(x=>x.slug===slug);it?it.qty+=qty:c.push({slug,qty});saveCart(c)}
 function setQty(slug,qty){let c=normalizeCart();if(qty<=0)c=c.filter(x=>x.slug!==slug);else{const it=c.find(x=>x.slug===slug);if(it)it.qty=qty}saveCart(c)}
+
+function setupAgeGate(){
+  if(localStorage.getItem('videiraAgeVerified')==='1') return;
+  const gate=document.createElement('div');
+  gate.className='age-gate';
+  gate.innerHTML='<div class="age-gate-backdrop"></div><div class="age-gate-shell"><div class="age-gate-logo"><img src="https://rmyybeaepscmzbddnvzr.supabase.co/storage/v1/object/public/cms/1790945834287-Imagem-do-ChatGPT-29-de-set.-de-2026--20_00_50.png" alt="Videira"></div><div class="age-gate-card"><span class="age-kicker">VERIFICAÇÃO DE IDADE</span><h2>VIDEIRA VINHOTECA</h2><p class="age-question">Você tem 18 anos ou mais?</p><p>O consumo de bebidas alcoólicas é exclusivo para maiores de 18 anos. Beba com moderação e responsabilidade.</p><div class="age-actions"><button type="button" class="age-yes">Tenho 18+</button><button type="button" class="age-no">Não tenho 18</button></div><small>Venda proibida para menores de 18 anos.</small></div></div>';
+  document.body.appendChild(gate);
+  document.body.classList.add('age-locked');
+  gate.querySelector('.age-yes').onclick=()=>{localStorage.setItem('videiraAgeVerified','1');gate.classList.add('leaving');setTimeout(()=>{gate.remove();document.body.classList.remove('age-locked')},260)};
+  gate.querySelector('.age-no').onclick=()=>{const card=gate.querySelector('.age-gate-card');card.innerHTML='<span class="age-kicker">ACESSO RESTRITO</span><h2>CONTEÚDO +18</h2><p class="age-question">Este catálogo é destinado apenas a maiores de 18 anos.</p><button type="button" class="age-back">Voltar</button>';card.querySelector('.age-back').onclick=()=>history.length>1?history.back():location.replace('https://www.google.com')};
+}
 function setupMobileMenu(){
  const btn=document.querySelector('.menu-toggle'),menu=document.getElementById('mobileMenu');if(!btn||!menu)return;
+ const closeBtn=menu.querySelector('.mobile-menu-close');
  const close=()=>{menu.classList.remove('open');btn.classList.remove('active');btn.setAttribute('aria-expanded','false');menu.setAttribute('aria-hidden','true');document.body.classList.remove('menu-open')};
  btn.onclick=()=>{const open=!menu.classList.contains('open');menu.classList.toggle('open',open);btn.classList.toggle('active',open);btn.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-hidden',String(!open));document.body.classList.toggle('menu-open',open)};
- menu.addEventListener('click',e=>{if(e.target===menu)close()});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));window.addEventListener('resize',()=>{if(innerWidth>1000)close()})
+ menu.addEventListener('click',e=>{if(e.target===menu)close()});closeBtn?.addEventListener('click',close);menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));window.addEventListener('resize',()=>{if(innerWidth>1000)close()})
 }
 function setupRail(root){
  const rail=root.querySelector('.wine-rail,.entity-rail');if(!rail)return;
@@ -56,7 +68,8 @@ function entityCard(kind,x,i){
 function whatsappWine(w,qty=1){const msg=encodeURIComponent('Olá! Gostaria de solicitar um orçamento para '+(qty>1?qty+'x ':'')+w.winery+' - '+w.name+'.');window.open('https://wa.me/5545999056277?text='+msg,'_blank','noopener')}
 
 (async()=>{
- setupMobileMenu();updateCartBadge();
+ setupAgeGate();setupMobileMenu();updateCartBadge();
+ if(!document.querySelector('.floating-whatsapp')){const w=document.createElement('a');w.className='floating-whatsapp';w.href='https://wa.me/5545999056277';w.target='_blank';w.rel='noopener';w.setAttribute('aria-label','WhatsApp');w.innerHTML='<svg viewBox="0 0 24 24"><path d="M20.5 11.7a8.3 8.3 0 0 1-12.3 7.2L4 20l1.1-4.1a8.3 8.3 0 1 1 15.4-4.2Z"/><path d="M9 8.2c.2-.5.5-.5.8-.5h.4c.2 0 .4 0 .5.4l.8 1.8c.1.3.1.5-.1.7l-.7.8c-.2.2-.2.4 0 .7.6 1.1 1.5 2 2.6 2.6.3.2.5.1.7-.1l.9-1c.2-.2.4-.3.7-.1l1.8.8c.3.1.4.3.4.5 0 .3-.2 1.4-.9 2-.6.6-1.5.8-2.4.5-1.1-.3-2.5-1-4.1-2.4-1.3-1.1-2.2-2.5-2.7-3.6-.5-1.1-.5-2.1-.1-2.9Z"/></svg>';document.body.appendChild(w)}
  const db=window.videiraDb;if(!db)return;
  const res=await Promise.all([
    db.from('wines').select('slug,name,winery,type,country,region,grapes,vintage,volume_ml,alcohol,price,description,aromas,pairings,serving_temperature,image_url,featured,new_arrival,sort_order,available').eq('active',true).order('sort_order'),
