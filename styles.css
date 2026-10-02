@@ -275,3 +275,95 @@ body.menu-open{overflow:hidden}
   .type-grid{grid-template-columns:1fr 1fr!important}
   .footer-grid{grid-template-columns:1fr!important}
 }
+
+/* Países: bandeira preenchendo o card visual e proporções mais compactas */
+.country-card{flex:0 0 200px!important;max-width:200px!important}
+.country-art{
+  height:112px!important;
+  padding:0!important;
+  overflow:hidden!important;
+  background:#f4eff1!important;
+}
+.country-art img{
+  width:100%!important;
+  height:100%!important;
+  border-radius:0!important;
+  object-fit:cover!important;
+  box-shadow:none!important;
+}
+.country-body{padding:15px 16px 17px!important}
+.country-body h3{font-size:24px!important;margin-bottom:4px!important}
+.country-body p{min-height:34px!important;margin:6px 0 12px!important}
+
+/* Vinícolas: mesmo tamanho, mesma lógica e carrossel dos países */
+.winery-rail{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  scroll-snap-type:x mandatory;
+  padding:5px 2px 22px;
+  cursor:grab;
+}
+.winery-rail::-webkit-scrollbar{display:none}
+.winery-slide-card{
+  flex:0 0 200px;
+  max-width:200px;
+  scroll-snap-align:start;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 9px 26px rgba(44,14,30,.06);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.winery-slide-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(44,14,30,.10)}
+.winery-slide-art{
+  height:112px;
+  background-size:cover;
+  background-position:center;
+}
+.winery-slide-body{padding:15px 16px 17px}
+.winery-slide-body span{
+  display:block;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#987384;
+  font-weight:800;
+  margin-bottom:6px;
+}
+.winery-slide-body h3{
+  font:24px/1.05 var(--heading);
+  margin:0 0 6px;
+}
+.winery-slide-body p{
+  min-height:34px;
+  margin:6px 0 12px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.45;
+}
+.winery-slide-body b{font-size:11px;color:var(--wine)}
+
+/* Refinos por dispositivo */
+@media(min-width:1001px){
+  .country-card,.winery-slide-card{flex-basis:215px!important;max-width:215px!important}
+  .country-art,.winery-slide-art{height:122px!important}
+}
+@media(min-width:651px) and (max-width:1000px){
+  .country-card,.winery-slide-card{flex-basis:205px!important;max-width:205px!important}
+  .country-art,.winery-slide-art{height:116px!important}
+}
+@media(max-width:650px){
+  .country-card,.winery-slide-card{
+    flex:0 0 46vw!important;
+    max-width:200px!important;
+  }
+  .country-art,.winery-slide-art{height:105px!important}
+  .country-body,.winery-slide-body{padding:14px!important}
+  .country-body h3,.winery-slide-body h3{font-size:22px!important}
+  .country-body p,.winery-slide-body p{font-size:11px!important;min-height:30px!important}
+  .section-heading h2{max-width:72vw}
+  .country-rail,.winery-rail{gap:12px!important}
+}
