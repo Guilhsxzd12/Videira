@@ -1,10 +1,4 @@
-const fallbackWines=[
-{slug:'santa-julia-chenin-dulce',winery:'Santa Julia',name:'Dulce Natural Chenin',country:'Argentina',region:'Mendoza',grapes:['Chenin Blanc'],type:'Sobremesa',price:89.9,featured:true},
-{slug:'dv-catena-chardonnay',winery:'D.V. Catena',name:'Chardonnay - Chardonnay',country:'Argentina',region:'Mendoza',grapes:['Chardonnay'],type:'Branco',price:179.9,featured:true},
-{slug:'dv-catena-malbec',winery:'D.V. Catena',name:'Malbec - Malbec',country:'Argentina',region:'Mendoza',grapes:['Malbec'],type:'Tinto',price:189.9,featured:true},
-{slug:'santa-julia-organica-malbec',winery:'Santa Julia',name:'Orgânica Malbec',country:'Argentina',region:'Mendoza',grapes:['Malbec'],type:'Tinto',price:99.9,featured:true},
-{slug:'catena-malbec',winery:'Catena Zapata',name:'Malbec',country:'Argentina',region:'Mendoza',grapes:['Malbec'],type:'Tinto',price:159.9,featured:true}
-];
+const fallbackWines=[];
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const slugify=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const money=n=>'R$ '+Number(n||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -22,8 +16,46 @@ function setupCarousel(root){
  rail.addEventListener('pointermove',e=>{if(!down)return;const d=e.clientX-start;if(Math.abs(d)>6)moved=true;if(moved){e.preventDefault();rail.scrollLeft=left-d}});
  rail.addEventListener('pointerup',()=>{down=false;setTimeout(()=>moved=false,0)});rail.addEventListener('pointercancel',()=>{down=false;moved=false});rail.addEventListener('pointerleave',()=>down=false)
 }
+
+function initResponsiveMenu(){
+ const bar=document.querySelector('.header-bar');
+ if(!bar||document.querySelector('.menu-toggle'))return;
+ const btn=document.createElement('button');
+ btn.className='menu-toggle';
+ btn.type='button';
+ btn.setAttribute('aria-label','Abrir menu');
+ btn.setAttribute('aria-expanded','false');
+ btn.innerHTML='<span></span><span></span><span></span>';
+ const cart=document.querySelector('.header-cart');
+ bar.insertBefore(btn,cart||null);
+ const menu=document.createElement('div');
+ menu.className='mobile-menu';
+ menu.innerHTML=
+ '<div class="mobile-menu-inner">'+
+   '<a class="mobile-main-link" href="/">Início</a>'+
+   '<details><summary>Vinhos</summary><div class="mobile-submenu">'+
+     '<a href="/loja">Todos os vinhos</a><a href="/loja?tipo=Tinto">Tintos</a><a href="/loja?tipo=Branco">Brancos</a><a href="/loja?tipo=Ros%C3%A9">Rosés</a><a href="/loja?tipo=Espumante">Espumantes</a><a href="/loja?tipo=Sobremesa">Sobremesa</a>'+
+   '</div></details>'+
+   '<details><summary>Uvas</summary><div class="mobile-submenu">'+
+     '<a href="/uvas">Todas as uvas</a><a href="/uva/malbec">Malbec</a><a href="/uva/chardonnay">Chardonnay</a><a href="/uva/cabernet-franc">Cabernet Franc</a><a href="/uva/pinot-noir">Pinot Noir</a>'+
+   '</div></details>'+
+   '<details><summary>Vinícolas</summary><div class="mobile-submenu">'+
+     '<a href="/vinicolas">Todas as vinícolas</a><a href="/vinicola/graham-beck">Graham Beck</a><a href="/vinicola/bodegas-fabre">Bodegas Fabre</a><a href="/vinicola/luiz-argenta">Luiz Argenta</a><a href="/vinicola/casa-valduga">Casa Valduga</a>'+
+   '</div></details>'+
+   '<a class="mobile-main-link" href="/regioes">Regiões</a>'+
+   '<a class="mobile-main-link" href="/carrinho">Carrinho</a>'+
+   '<form class="mobile-search" action="/loja"><input name="q" placeholder="Buscar vinho, uva ou vinícola"><button>Buscar</button></form>'+
+ '</div>';
+ document.body.appendChild(menu);
+ const close=()=>{menu.classList.remove('open');btn.classList.remove('active');btn.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')};
+ btn.addEventListener('click',()=>{const open=menu.classList.toggle('open');btn.classList.toggle('active',open);btn.setAttribute('aria-expanded',String(open));document.body.classList.toggle('menu-open',open)});
+ document.addEventListener('click',e=>{if(menu.classList.contains('open')&&!menu.contains(e.target)&&!btn.contains(e.target))close()});
+ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+ window.addEventListener('resize',()=>{if(innerWidth>1000)close()});
+}
 function pathInfo(){const p=decodeURIComponent(location.pathname).split('/').filter(Boolean);return {kind:p[0]||'',slug:p.slice(1).join('/')||''}}
 (async()=>{
+ initResponsiveMenu();
  const db=window.videiraDb;let wines=fallbackWines,types=[],grapes=[],wineries=[];
  if(db){
   const [wr,tr,gr,br]=await Promise.all([
@@ -41,7 +73,7 @@ function pathInfo(){const p=decodeURIComponent(location.pathname).split('/').fil
  const grapeRail=document.getElementById('grapeRail');if(grapeRail){if(!grapes.length)grapes=[{name:'Malbec',description:'Frutado, macio e intenso.'},{name:'Chardonnay',description:'Versátil, fresco e elegante.'},{name:'Chenin Blanc',description:'Aromático, fresco e versátil.'},{name:'Cabernet Franc',description:'Elegante, herbal e vibrante.'},{name:'Pinot Noir',description:'Delicado e perfumado.'},{name:'Merlot',description:'Macio e redondo.'}];grapeRail.innerHTML=grapes.map(g=>'<a class="grape-card" href="/uva/'+slugify(g.name)+'"><div class="grape-art"'+(g.image_url?' style="background-image:url('+JSON.stringify(g.image_url)+')"':'')+'></div><div class="grape-body"><h3>'+esc(g.name)+'</h3><p>'+esc(g.description||'Explore os rótulos desta variedade.')+'</p><b>Ver vinhos</b></div></a>').join('')}
  const countries=[...new Set(wines.map(w=>w.country).filter(Boolean))].sort(),countryRail=document.getElementById('countryRail');
  if(countryRail)countryRail.innerHTML=countries.map(c=>'<a class="country-card" href="/pais/'+slugify(c)+'"><div class="country-art">'+(flagUrl(c)?'<img src="'+flagUrl(c)+'" alt="'+esc(c)+'">':'')+'</div><div class="country-body"><h3>'+esc(c)+'</h3><p>'+wines.filter(w=>w.country===c).length+' rótulo(s) no catálogo</p><b>Explorar país</b></div></a>').join('');
- const homeWineries=document.getElementById('homeWineries');if(homeWineries){if(!wineries.length)wineries=[{name:'Santa Julia',country:'Argentina',description:'Tradição e inovação em Mendoza.'},{name:'Catena Zapata',country:'Argentina',description:'Altitude e expressão de terroir.'},{name:'Garzón',country:'Uruguai',description:'Elegância atlântica e identidade uruguaia.'}];const stock=['https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=900&q=85','https://images.unsplash.com/photo-1464638681273-096c166ab676?auto=format&fit=crop&w=900&q=85','https://images.unsplash.com/photo-1473973266408-ed4e27abdd47?auto=format&fit=crop&w=900&q=85'];homeWineries.innerHTML=wineries.slice(0,3).map((w,i)=>'<a class="winery-card" href="/vinicola/'+slugify(w.name)+'" style="background-image:url('+JSON.stringify(w.image_url||stock[i%3])+')"><div><span>'+esc(w.country||'')+'</span><h3>'+esc(w.name)+'</h3><p>'+esc(w.description||'Conheça os vinhos desta vinícola.')+'</p><b>Conhecer</b></div></a>').join('')}
+ const homeWineries=document.getElementById('homeWineries');if(homeWineries){if(!wineries.length){const wm=new Map();wines.forEach(w=>{if(w.winery&&!wm.has(w.winery))wm.set(w.winery,{name:w.winery,country:w.country||'',description:[w.region,w.country].filter(Boolean).join(', ')})});wineries=[...wm.values()]}const stock=['https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=900&q=85','https://images.unsplash.com/photo-1464638681273-096c166ab676?auto=format&fit=crop&w=900&q=85','https://images.unsplash.com/photo-1473973266408-ed4e27abdd47?auto=format&fit=crop&w=900&q=85'];homeWineries.innerHTML=wineries.slice(0,3).map((w,i)=>'<a class="winery-card" href="/vinicola/'+slugify(w.name)+'" style="background-image:url('+JSON.stringify(w.image_url||stock[i%3])+')"><div><span>'+esc(w.country||'')+'</span><h3>'+esc(w.name)+'</h3><p>'+esc(w.description||'Conheça os vinhos desta vinícola.')+'</p><b>Conhecer</b></div></a>').join('')}
  document.querySelectorAll('.carousel-shell').forEach(setupCarousel);
 
  const catalog=document.getElementById('catalog');
