@@ -677,3 +677,31 @@ body.age-locked{overflow:hidden!important}
   .product-payment-box{grid-template-columns:1fr}
   .payment-prices{font-size:11px}
 }
+
+.wine-price{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:1px;
+}
+.wine-price small{
+  font-size:9px!important;
+  line-height:1;
+  letter-spacing:.12em;
+  font-weight:800;
+  color:var(--green)!important;
+}
+.payment-prices{
+  margin-top:-4px!important;
+}
+.payment-prices span{
+  justify-content:flex-start!important;
+  gap:8px!important;
+}
+.payment-prices b{
+  color:var(--muted)!important;
+}
+.shipping-row strong{
+  color:var(--wine);
+  font-weight:800;
+}
