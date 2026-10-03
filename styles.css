@@ -633,3 +633,47 @@ body.age-locked{overflow:hidden!important}
   .age-actions{grid-template-columns:1fr}
   .footer-main{grid-template-columns:1fr!important}
 }
+
+.payment-prices{
+  display:grid;
+  gap:4px;
+  margin:-2px 0 12px;
+  font-size:11px;
+  color:var(--muted);
+}
+.payment-prices span{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+.payment-prices b{
+  color:var(--wine);
+  font-weight:800;
+}
+.product-payment-box{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:0 0 18px;
+}
+.product-payment-box>div{
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fbf6f8;
+  padding:12px 14px;
+}
+.product-payment-box span{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:4px;
+}
+.product-payment-box strong{
+  display:block;
+  color:var(--wine);
+  font-size:16px;
+}
+@media(max-width:650px){
+  .product-payment-box{grid-template-columns:1fr}
+  .payment-prices{font-size:11px}
+}
